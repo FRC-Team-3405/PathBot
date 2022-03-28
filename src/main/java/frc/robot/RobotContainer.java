@@ -79,12 +79,12 @@ public class RobotContainer {
             .addConstraint(autoVoltageConstraint);
             
     // An example trajectory to follow.  All units in meters.
-    Trajectory exampleTrajectory = 
-      TrajectoryGenerator.generateTrajectory(
-        new Pose2d(0, 0, new Rotation2d(0)),
-        List.of(),
-        new Pose2d(3, 0, new Rotation2d(0)),
-        config);
+    //Trajectory exampleTrajectory = 
+      //TrajectoryGenerator.generateTrajectory(
+        //new Pose2d(0, 0, new Rotation2d(0)),
+        //List.of(),
+        //new Pose2d(3, 0, new Rotation2d(0)),
+        //config);
 
     String trajectoryJSON = "output/Jimmy.wpilib.json";
     Trajectory testTrajectory = new Trajectory();
