@@ -59,24 +59,24 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
 
     // Create a voltage constraint to ensure we don't accelerate too fast
-    var autoVoltageConstraint =
-        new DifferentialDriveVoltageConstraint(
-            new SimpleMotorFeedforward(
-                DriveConstants.ksVolts,
-                DriveConstants.kvVoltSecondsPerMeter,
-                DriveConstants.kaVoltSecondsSquaredPerMeter),
-            DriveConstants.kDriveKinematics,
-            10);
+    // var autoVoltageConstraint =
+    //     new DifferentialDriveVoltageConstraint(
+    //         new SimpleMotorFeedforward(
+    //             DriveConstants.ksVolts,
+    //             DriveConstants.kvVoltSecondsPerMeter,
+    //             DriveConstants.kaVoltSecondsSquaredPerMeter),
+    //         DriveConstants.kDriveKinematics,
+    //         10);
 
     // Create config for trajectory
-    TrajectoryConfig config =
-        new TrajectoryConfig(
-                AutoConstants.kMaxSpeedMetersPerSecond,
-                AutoConstants.kMaxAccelerationMetersPerSecondSquared)
-            // Add kinematics to ensure max speed is actually obeyed
-            .setKinematics(DriveConstants.kDriveKinematics)
-            // Apply the voltage constraint
-            .addConstraint(autoVoltageConstraint);
+    // TrajectoryConfig config =
+    //     new TrajectoryConfig(
+    //             AutoConstants.kMaxSpeedMetersPerSecond,
+    //             AutoConstants.kMaxAccelerationMetersPerSecondSquared)
+    //         // Add kinematics to ensure max speed is actually obeyed
+    //         .setKinematics(DriveConstants.kDriveKinematics)
+    //         // Apply the voltage constraint
+    //         .addConstraint(autoVoltageConstraint);
             
     // An example trajectory to follow.  All units in meters.
     //Trajectory exampleTrajectory = 
@@ -86,7 +86,7 @@ public class RobotContainer {
         //new Pose2d(3, 0, new Rotation2d(0)),
         //config);
 
-    String trajectoryJSON = "output/Jimmy.wpilib.json";
+    String trajectoryJSON = "output/Timmy.wpilib.json";
     Trajectory testTrajectory = new Trajectory();
     
     try {
