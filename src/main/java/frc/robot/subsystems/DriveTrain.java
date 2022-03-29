@@ -6,7 +6,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
- import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
@@ -88,6 +88,8 @@ public class DriveTrain extends SubsystemBase {
     m_shift.set(DoubleSolenoid.Value.kReverse);
     shifterStatus = ShifterStatus.LOW;}
 
+  // Set up the arcadeDrive
+  
   @Override
   public void periodic() {
     // Update the odometry in the periodic block
@@ -133,6 +135,7 @@ public class DriveTrain extends SubsystemBase {
     m_drive.arcadeDrive(fwd, rot);
   }
 
+
   /**
    * Controls the left and right sides of the drive directly with voltages.
    *
@@ -151,22 +154,14 @@ public class DriveTrain extends SubsystemBase {
     m_rightEncoder.reset();
   }
 
-  /**
-   * Gets the average distance of the two encoders.
-   *
-   * @return the average of the two encoder readings
-   */
-  public double getAverageEncoderDistance() {
-    return (m_leftEncoder.getDistance() + m_rightEncoder.getDistance()) / 2.0;
-  }
 
   /**
    * Gets the left drive encoder.
    *
    * @return the left drive encoder
    */
-  public Encoder getLeftEncoder() {
-    return m_leftEncoder;
+  public double getLeftEncoder() {
+    return (m_leftEncoder.get() * Constants.DISTANCE_PER_PULSE);
   }
 
   /**
@@ -174,8 +169,17 @@ public class DriveTrain extends SubsystemBase {
    *
    * @return the right drive encoder
    */
-  public Encoder getRightEncoder() {
-    return m_rightEncoder;
+  public double getRightEncoder() {
+    return (m_rightEncoder.get() * Constants.DISTANCE_PER_PULSE);
+  }
+
+  /**
+   * Gets the average distance of the two encoders.
+   *
+   * @return the average of the two encoder readings
+   */
+  public double getAverageEncoderDistance() {
+    return (getLeftEncoder() + getRightEncoder()) / 2;
   }
 
   /**
