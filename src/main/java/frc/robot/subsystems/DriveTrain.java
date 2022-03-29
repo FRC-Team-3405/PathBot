@@ -6,19 +6,26 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.Compressor;
+ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.DriveConstants;
 
 public class DriveTrain extends SubsystemBase {
+  // Shifter Status
+  public enum ShifterStatus{
+    HIGH, LOW
+  }
+  public static ShifterStatus shifterStatus;
   // Compressor
-  Compressor m_comp;
-  DoubleSolenoid m_shift;
+  Compressor m_comp = new Compressor(Constants.COMPRESSOR_PORT, PneumaticsModuleType.CTREPCM); // Instantiate a Compressor
+  DoubleSolenoid m_shift = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.HIGHGEAR, Constants.LOWGEAR);
 
   // The motors on the left side of the drive.
   private final MotorControllerGroup m_leftMotors =
@@ -57,6 +64,7 @@ public class DriveTrain extends SubsystemBase {
 
   /** Creates a new DriveSubsystem. */
   public DriveTrain() {
+    // Shift Gears
     // We need to invert one side of the drivetrain so that positive voltages
     // result in both sides moving forward. Depending on how your robot's
     // gearbox is constructed, you might have to invert the left side instead.
@@ -69,6 +77,16 @@ public class DriveTrain extends SubsystemBase {
     resetEncoders();
     m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
   }
+  
+  // Shift to High Gear, Update the SmartDashboard to show we are in HIGH gear
+  public void shiftHigh(){
+    m_shift.set(DoubleSolenoid.Value.kForward);
+    shifterStatus = ShifterStatus.HIGH;}
+
+  // Shift to Low Gear, Update the SmartDashboard to show we are in LOW gear
+  public void shiftLow(){
+    m_shift.set(DoubleSolenoid.Value.kReverse);
+    shifterStatus = ShifterStatus.LOW;}
 
   @Override
   public void periodic() {
@@ -190,5 +208,8 @@ public class DriveTrain extends SubsystemBase {
    */
   public double getTurnRate() {
     return -m_gyro.getRate();
+  }
+  public static ShifterStatus getShifterGear() {
+    return shifterStatus;
   }
 }

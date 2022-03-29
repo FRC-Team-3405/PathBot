@@ -17,4 +17,9 @@ public final class Constants {
     public static final int XBOX_YAXIS = 3;
     public static final double MAX_POWER = 0.8;
     public static final double MAX_TURN_POWER = 0.8;
-    public static int kPigeonPort;}
+    public static final int KNOWN_TAPE_BOUND_WIDTH = 5;
+    public static final int FOCAL_LENGTH = 0;
+    public static final int HIGHGEAR = 1;
+    public static final int LOWGEAR = 2;
+    public static final int COMPRESSOR_PORT = 0;
+}

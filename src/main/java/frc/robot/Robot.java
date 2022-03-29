@@ -5,10 +5,16 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.subsystems.*;
-import frc.robot.commands.*;
+import frc.robot.subsystems.DriveTrain.ShifterStatus;
+import frc.robot.utils.Limelight;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -18,10 +24,12 @@ import frc.robot.commands.*;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  arcadeDrive arcadeDrive;
 
-  private RobotContainer m_robotContainer;
-  DriveTrain m_robotDrive;
+  public static RobotContainer m_robotContainer;
+  public static NetworkTable networkTable; // LimeLight Network Tables
+  public static NetworkTable rootNetworkTable; // LimeLight Network Tables
+
+  DriveTrain DriveTrain;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -29,9 +37,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // Initialize Subsystems
     m_robotContainer = new RobotContainer();
-    // Initialize Commands
+
+    // LimeLight Network Tables
+    networkTable = NetworkTableInstance.getDefault().getTable("SmartDashboard");
+    rootNetworkTable = NetworkTableInstance.getDefault().getTable("");
     
     }
   /**
@@ -48,6 +58,35 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    // LimeLight Network Tables
+    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+    NetworkTableEntry tx = table.getEntry("tx");
+    NetworkTableEntry ty = table.getEntry("ty");
+    NetworkTableEntry ta = table.getEntry("ta");
+    NetworkTableEntry tlong = table.getEntry("tlong");
+
+    // Read values from the NetworkTables for the LimeLight
+    double x = tx.getDouble(0.0);
+    double y = ty.getDouble(0.0);
+    double area = ta.getDouble(0.0);
+    double schlong = tlong.getDouble(0.0);
+
+    // Post LimeLight Values to the SmartDashboard
+    SmartDashboard.putNumber("LimelightX", x);
+    SmartDashboard.putNumber("LimelightY", y);
+    SmartDashboard.putNumber("LimelightArea", area);
+
+    SmartDashboard.putNumber("schlong", schlong);
+
+    SmartDashboard.putNumber("distance", Limelight.getDistance());
+
+    SmartDashboard.putNumber("hor distance", Limelight.getHorDistance());
+
+    // Post different values to troubleshoot the bot from a distance
+    if(frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.HIGH) {
+      SmartDashboard.putString("Shifter Gear", "HIGH");} // Shifter Status (Set to HIGH)
+    else if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.LOW) {
+      SmartDashboard.putString("Shifter Gear", "LOW");} // Shifter Status (Set to LOW)
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
