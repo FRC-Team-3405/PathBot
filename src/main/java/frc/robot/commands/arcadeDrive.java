@@ -24,13 +24,13 @@ public class arcadeDrive extends CommandBase {
   public void execute() {
     double moveSpeed = -RobotContainer.xbox.getRawAxis(Constants.XBOX_XAXIS)*Constants.MAX_POWER; // Limit the moveSpeed to 80% Power
     double rotateSpeed = RobotContainer.xbox.getRawAxis(Constants.XBOX_YAXIS)*Constants.MAX_TURN_POWER; // Limit the rotateSpeed to 80% Power
-    // RobotContainer.drivetrain.arcadeDrive(moveSpeed, rotateSpeed);
+    RobotContainer.m_robotDrive.arcadeDrive(moveSpeed, rotateSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    // RobotContainer.drivetrain.arcadeDrive(0,0); // Stops the motors when the robot is disabled or enters teleop mode AFTER auto
+    RobotContainer.m_robotDrive.arcadeDrive(0,0); // Stops the motors when the robot is disabled or enters teleop mode AFTER auto
   }
 
   // Returns true when the command should end.

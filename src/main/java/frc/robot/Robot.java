@@ -91,7 +91,13 @@ public class Robot extends TimedRobot {
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    // Post different values to troubleshoot the bot from a distance
+    if(frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.HIGH) {
+      SmartDashboard.putString("Shifter Gear", "HIGH");} // Shifter Status (Set to HIGH)
+    else if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.LOW) {
+      SmartDashboard.putString("Shifter Gear", "LOW");} // Shifter Status (Set to LOW)
+  }
 
   @Override
   public void disabledPeriodic() {}

@@ -28,6 +28,7 @@ public class DriveTrain extends SubsystemBase {
   DoubleSolenoid m_shift = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.HIGHGEAR, Constants.LOWGEAR);
 
   // The motors on the left side of the drive.
+  // The motors on the right side of the drive.
   private final MotorControllerGroup m_leftMotors =
       new MotorControllerGroup(
           new WPI_TalonFX(DriveConstants.FL_TALONFX),

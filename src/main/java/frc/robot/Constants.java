@@ -30,10 +30,10 @@ public final class Constants {
 
     //** DriveTrain */
     public static final double DRIVE_ENCODER_RESOLUTION = 8192.0; // Rev's ThroughBore Encoders read 8192 ticks per rotation.
-    public static final double DRIVE_WHEEL_DIAMETER = 6.0;
+    public static final double DRIVE_WHEEL_DIAMETER = 0.1524; // 6 Inches in meters is 0.1524
     public static final double DISTANCE_PER_PULSE = (DRIVE_WHEEL_DIAMETER * Math.PI) / DRIVE_ENCODER_RESOLUTION;
     public static final double MAX_POWER = 0.8; // Max Power to the motors during Teleop mode
-    public static final double MAX_TURN_POWER = 0.8; // Max Power to the motors while turning durng Telop mode
+    public static final double MAX_TURN_POWER = 0.8; // Max Power to the motors while turning durng Teleop mode
     public static final int COMPRESSOR_PORT = 0; // Compressor
     public static final int HIGHGEAR = 1; // Double Solenoid kForward port
     public static final int LOWGEAR = 2; // Double solenoid kReverse port
