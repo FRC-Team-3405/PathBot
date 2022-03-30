@@ -3,8 +3,11 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -46,15 +49,15 @@ public class DriveTrain extends SubsystemBase {
   // The left-side drive encoder
   private final Encoder m_leftEncoder =
       new Encoder(
-          DriveConstants.kLeftEncoderPortOne,
-          DriveConstants.kLeftEncoderPortTwo,
+          DriveConstants.kLeftEncoderPorts[0],
+          DriveConstants.kLeftEncoderPorts[1],
           DriveConstants.kLeftEncoderReversed);
 
   // The right-side drive encoder
   private final Encoder m_rightEncoder =
       new Encoder(
-          DriveConstants.kRightEncoderPortOne,
-          DriveConstants.kRightEncoderPortTwo,
+          DriveConstants.kRightEncoderPorts[0],
+          DriveConstants.kRightEncoderPorts[1],
           DriveConstants.kRightEncoderReversed);
 
   // The gyro sensor
@@ -89,13 +92,21 @@ public class DriveTrain extends SubsystemBase {
     m_shift.set(DoubleSolenoid.Value.kReverse);
     shifterStatus = ShifterStatus.LOW;}
 
-  // Set up the arcadeDrive
+  // Test Stuff
+  NetworkTableEntry m_xEntry = NetworkTableInstance.getDefault().getTable("troubleshooting").getEntry("X");
+  NetworkTableEntry m_yEntry = NetworkTableInstance.getDefault().getTable("troubleshooting").getEntry("Y");
   
   @Override
   public void periodic() {
     // Update the odometry in the periodic block
     m_odometry.update(
         m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
+
+    m_odometry.update(Rotation2d.fromDegrees(getHeading()), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
+
+    var translation = m_odometry.getPoseMeters().getTranslation();
+    m_xEntry.setNumber(translation.getX());
+    m_yEntry.setNumber(translation.getY());
   }
 
   /**

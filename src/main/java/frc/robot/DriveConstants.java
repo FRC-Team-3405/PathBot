@@ -8,11 +8,9 @@ public final class DriveConstants {
     public static int BR_TALONFX = 2;
     public static int FL_TALONFX = 3;
     public static int BL_TALONFX = 4;
-    public static int kLeftEncoderPortOne = 2;
-    public static int kLeftEncoderPortTwo = 3;
+    public static int[] kLeftEncoderPorts = {2,3};
     public static boolean kLeftEncoderReversed = false;
-    public static int kRightEncoderPortOne = 0;
-    public static int kRightEncoderPortTwo = 1;
+    public static int[] kRightEncoderPorts = {0,1};
     public static boolean kRightEncoderReversed = true;
     public static double kEncoderDistancePerPulse = 1/8192 * 6 * Math.PI; // 1 over cycles/pulses per rotation times circumfrence of the wheel (6 * pi)
     public static double ksVolts = 0.57919; // Speed
