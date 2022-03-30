@@ -95,13 +95,14 @@ public class RobotContainer {
   //     config
   // );
 
-    String trajectoryJSON = "output/tenfoot.wpilib.json";
+    String trajectoryJSON = "output/circle.wpilib.json";
     Trajectory testTrajectory = new Trajectory();
     
     try {
       Path trajectoryPath = Filesystem.getDeployDirectory().toPath().resolve(trajectoryJSON);
-      //System.out.println(trajectoryPath);
+      System.out.println("Path: " + trajectoryPath);
       testTrajectory = TrajectoryUtil.fromPathweaverJson(trajectoryPath);
+      //testTrajectory = TrajectoryUtil.fromPathweaverJson(trajectoryPath);
 
     } catch (IOException ex) {
       DriverStation.reportError("Unable to open trajectory: " + trajectoryJSON, ex.getStackTrace());
@@ -125,7 +126,7 @@ public class RobotContainer {
             m_robotDrive);
 
     // Reset odometry to the starting pose of the trajectory.
-    // m_robotDrive.resetOdometry(exampleTrajectory.getInitialPose());
+    m_robotDrive.resetOdometry(testTrajectory.getInitialPose());
 
     // Run path following command, then stop at the end.
     return ramseteCommand.andThen(() -> m_robotDrive.tankDriveVolts(0, 0));
