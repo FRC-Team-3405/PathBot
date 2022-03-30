@@ -29,7 +29,9 @@ public final class Constants {
     public static final int SHOOT_BALL = 4; // Run the motors to shoot the ball!
 
     //** DriveTrain */
-    public static final double DRIVE_ENCODER_RESOLUTION = 8192.0; // Rev's ThroughBore Encoders read 8192 ticks per rotation.
+    //public static final double DRIVE_ENCODER_RESOLUTION = 8192.0; // Rev's ThroughBore Encoders read 8192 ticks per rotation.
+    public static final double DRIVE_ENCODER_RESOLUTION = 2048.0; // Rev's ThroughBore Encoders read 8192 ticks per rotation.
+
     public static final double DRIVE_WHEEL_DIAMETER = 0.1524; // 6 Inches in meters is 0.1524
     public static final double DISTANCE_PER_PULSE = (DRIVE_WHEEL_DIAMETER * Math.PI) / DRIVE_ENCODER_RESOLUTION;
     public static final double MAX_POWER = 0.8; // Max Power to the motors during Teleop mode

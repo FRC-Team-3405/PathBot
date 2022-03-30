@@ -95,7 +95,7 @@ public class RobotContainer {
   //     config
   // );
 
-    String trajectoryJSON = "output/circle.wpilib.json";
+    String trajectoryJSON = "output/test.wpilib.json";
     Trajectory testTrajectory = new Trajectory();
     
     try {
@@ -119,8 +119,8 @@ public class RobotContainer {
                 DriveConstants.kaVoltSecondsSquaredPerMeter),
             DriveConstants.kDriveKinematics,
             m_robotDrive::getWheelSpeeds,
-            new PIDController(DriveConstants.kPDriveVel, 0, 0),
-            new PIDController(DriveConstants.kPDriveVel, 0, 0),
+            new PIDController(DriveConstants.kPDriveVel, 0.5, 0.05),
+            new PIDController(DriveConstants.kPDriveVel, 0.5, 0.05),
             // RamseteCommand passes volts to the callback
             m_robotDrive::tankDriveVolts,
             m_robotDrive);
