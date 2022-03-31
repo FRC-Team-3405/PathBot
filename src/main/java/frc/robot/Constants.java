@@ -17,7 +17,7 @@ public final class Constants {
     // AIRFLO Controller (Xbox Controller)
     public static final int XBOX = 0; // AIRFLO/XBOX Controller Port
     public static final int XBOX_XAXIS = 1; // arcadeDrive
-    public static final int XBOX_YAXIS = 3; // arcadeDrive; Change to 4 if using an XboxController
+    public static final int XBOX_YAXIS = 4; // arcadeDrive; Change to 4 if using an XboxController
     public static final int SHIFT_HIGHGEAR_BUTTON = 8; // Right Trigger on AirFlo
     public static final int SHIFT_LOWGEAR_BUTTON = 7; // Left Trigger on AirFlo
 
@@ -35,7 +35,7 @@ public final class Constants {
     public static final double DRIVE_WHEEL_DIAMETER = 0.1524; // 6 Inches in meters is 0.1524
     public static final double DISTANCE_PER_PULSE = (DRIVE_WHEEL_DIAMETER * Math.PI) / DRIVE_ENCODER_RESOLUTION;
     public static final double MAX_POWER = 0.8; // Max Power to the motors during Teleop mode
-    public static final double MAX_TURN_POWER = 0.8; // Max Power to the motors while turning durng Teleop mode
+    public static final double MAX_TURN_POWER = 0.8; // Max Power to the motors while turning during Teleop mode
     public static final int COMPRESSOR_PORT = 0; // Compressor
     public static final int HIGHGEAR = 1; // Double Solenoid kForward port
     public static final int LOWGEAR = 2; // Double solenoid kReverse port

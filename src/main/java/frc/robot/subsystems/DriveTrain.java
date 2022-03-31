@@ -75,8 +75,8 @@ public class DriveTrain extends SubsystemBase {
     m_rightMotors.setInverted(true);
 
     // Sets the distance per pulse for the encoders
-    m_leftEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
-    m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
+    m_leftEncoder.setDistancePerPulse(Constants.DISTANCE_PER_PULSE);
+    m_rightEncoder.setDistancePerPulse(Constants.DISTANCE_PER_PULSE);
 
     resetEncoders();
     m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
@@ -99,9 +99,12 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // Update the odometry in the periodic block
+    // BRO LOOK RIGHT HERE // 
+    // BRO? //
+    // BRO? Can you see this line? //
     m_odometry.update(
-        m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
-
+        //m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance()); // Multiply these values by the DISTANCE_PER_PULSE constant?
+        m_gyro.getRotation2d(), m_leftEncoder.getDistance()*Constants.DISTANCE_PER_PULSE, m_rightEncoder.getDistance()*Constants.DISTANCE_PER_PULSE); // Testing stuff
     m_odometry.update(Rotation2d.fromDegrees(getHeading()), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
 
     var translation = m_odometry.getPoseMeters().getTranslation();

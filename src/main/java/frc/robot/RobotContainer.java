@@ -119,8 +119,8 @@ public class RobotContainer {
                 DriveConstants.kaVoltSecondsSquaredPerMeter),
             DriveConstants.kDriveKinematics,
             m_robotDrive::getWheelSpeeds,
-            new PIDController(DriveConstants.kPDriveVel, 0.5, 0.05),
-            new PIDController(DriveConstants.kPDriveVel, 0.5, 0.05),
+            new PIDController(DriveConstants.kPDriveVel, 0.4, 0.05),
+            new PIDController(DriveConstants.kPDriveVel, 0.4, 0.05),
             // RamseteCommand passes volts to the callback
             m_robotDrive::tankDriveVolts,
             m_robotDrive);
