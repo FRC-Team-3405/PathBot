@@ -51,6 +51,8 @@ public final class Constants {
 
     public static final int COLOR_SENSOR = 1;
     public static final int BREAK_LIGHT = 2;
-    
+    public static final int BACK_FEED = 3;
+
+    public static final int SHOOTER_MOTOR = 6;
     
 }

@@ -17,9 +17,7 @@ class BallProcessing {
     }
 
 
-    public BallProcessing() {
-
-    }
+    public BallProcessing() {}
 
     public void setTowerFeed(Feed f) {
         if (f == Feed.IN) {
@@ -34,8 +32,4 @@ class BallProcessing {
     public boolean isBroken() {
         return breakLight.get();
     }
-
-
-
-
 }

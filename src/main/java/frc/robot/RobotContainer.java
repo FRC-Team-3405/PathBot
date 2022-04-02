@@ -36,7 +36,8 @@ import frc.robot.subsystems.*;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  public final static DriveTrain m_robotDrive = new DriveTrain();
+  public static final DriveTrain m_robotDrive = new DriveTrain();
+  public static final Shooter m_shooter = new Shooter();
   public static XboxController xbox = new XboxController(0);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
