@@ -2,9 +2,10 @@ package frc.robot.utils;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Limelight {
+public class Limelight extends SubsystemBase{
     private static NetworkTableInstance table = null;
 
     /**
