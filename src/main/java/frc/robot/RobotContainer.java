@@ -26,8 +26,11 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
+import frc.robot.commands.AlignRobot;
 import frc.robot.commands.arcadeDrive;
 import frc.robot.subsystems.*;
+import frc.robot.utils.Limelight;
+import frc.robot.utils.Limelight.LightMode;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -47,6 +50,7 @@ public class RobotContainer {
 
     // Set default commands on subsystems
     m_robotDrive.setDefaultCommand(new arcadeDrive());
+    Limelight.setLedMode(LightMode.eOff);
   }
 
   /**
@@ -63,6 +67,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+    if (true)
+      return new AlignRobot();
 
   //   //Create a voltage constraint to ensure we don't accelerate too fast
   //    var autoVoltageConstraint =
