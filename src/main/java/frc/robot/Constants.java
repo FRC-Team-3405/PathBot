@@ -44,5 +44,13 @@ public final class Constants {
     //** LimeLight Camera */
     public static final int KNOWN_TAPE_BOUND_WIDTH = 5; // Width of the tape
     public static final int FOCAL_LENGTH = 0; //** This is an equation of some kind pulled from this repo: https://github.com/Yeti-Robotics/Y3T1-java-2021/blob/master/src/main/java/frc/robot/RobotContainer.java*/
+
+    public static final int EXTENDER_FORWARD = 2;
+    public static final int EXTENDER_BACKWARDS = 3;
+    public static final int INTAKE_VICTOR = 4;
+
+    public static final int COLOR_SENSOR = 1;
+    public static final int BREAK_LIGHT = 2;
+    
     
 }
