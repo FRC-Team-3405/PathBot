@@ -57,9 +57,9 @@ public class AlignRobot extends CommandBase {
     }
 
     if (yaw > 0) {
-      RobotContainer.m_robotDrive.tankDriveVolts(1, -1);
+      RobotContainer.m_robotDrive.tankDriveVolts(1, -1); // Note: 3 & -3 did not work
     } else {
-      RobotContainer.m_robotDrive.tankDriveVolts(-1, 1);
+      RobotContainer.m_robotDrive.tankDriveVolts(-1, 1); // Note: 3 & -3 did not work
     }
 
   }
