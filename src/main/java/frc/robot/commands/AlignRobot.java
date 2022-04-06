@@ -6,7 +6,6 @@ package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.DriveTrain;
 import frc.robot.utils.Limelight;
 import frc.robot.utils.Limelight.LightMode;
 import edu.wpi.first.wpilibj.Timer;
@@ -40,6 +39,7 @@ public class AlignRobot extends CommandBase {
   public void execute() {
     if (!Limelight.isTarget()) {
       System.out.println("There is no target here.");
+      RobotContainer.m_robotDrive.tankDriveVolts(5, -5);
       return;
     }
     

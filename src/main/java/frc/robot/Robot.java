@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -19,11 +18,9 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.CvSink;
 import edu.wpi.first.cscore.CvSource;
 import edu.wpi.first.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.TimedRobot;
 import org.opencv.core.Mat;
-import org.opencv.core.Point;
-import org.opencv.core.Scalar;
-import org.opencv.imgproc.Imgproc;
+import frc.robot.utils.Limelight.LightMode;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -92,8 +89,7 @@ public class Robot extends TimedRobot {
           }
         });
     m_visionThread.setDaemon(true);
-    m_visionThread.start();
-
+    m_visionThread.start();  
   }
 
   /**
@@ -168,7 +164,9 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
+    Limelight.setLedMode(LightMode.eOff); // Turn the LimeLight off when disabled but powered on
   }
+
 
   /**
    * This autonomous runs the autonomous command selected by your
@@ -214,6 +212,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {
+    Limelight.setLedMode(LightMode.eOn); // Turn the LimeLight on during test mode to tune the feed
   }
 
   /** This function is called once when the robot is first started up. */
