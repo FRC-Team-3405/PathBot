@@ -4,11 +4,12 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import frc.robot.Constants;
 import edu.wpi.first.wpilibj.AnalogInput;
 
-class BallProcessing {
-    private DigitalInput breakLight = new DigitalInput(0);
-    private WPI_VictorSPX towerFeed = new WPI_VictorSPX(0);
+public class BallProcessing {
+    private static DigitalInput breakLight = new DigitalInput(Constants.BREAKLIGHT_PORT);
+    private WPI_VictorSPX towerFeed = new WPI_VictorSPX(Constants.TOWER_FEED_MOTOR);
 
     public enum Feed {
         IN,
@@ -29,7 +30,7 @@ class BallProcessing {
         }
     }
 
-    public boolean isBroken() {
+    public static boolean isBroken() {
         return breakLight.get();
     }
 }

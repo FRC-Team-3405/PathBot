@@ -20,6 +20,7 @@ public final class Constants {
     public static final int XBOX_YAXIS = 4; // arcadeDrive; Change to 4 if using an XboxController
     public static final int SHIFT_HIGHGEAR_BUTTON = 8; // Right Trigger on AirFlo
     public static final int SHIFT_LOWGEAR_BUTTON = 7; // Left Trigger on AirFlo
+    public static final int ALIGN_ROBOT_BUTTON = 6;
 
     // Joystick Controller (Secondary Driver)
     public static final int JOYSTICK = 1; // Joystick Controller Port
@@ -31,7 +32,6 @@ public final class Constants {
     //** DriveTrain */
     //public static final double DRIVE_ENCODER_RESOLUTION = 8192.0; // Rev's ThroughBore Encoders read 8192 ticks per rotation.
     public static final double DRIVE_ENCODER_RESOLUTION = 2048.0; // Rev's ThroughBore Encoders read 8192 ticks per rotation.
-
     public static final double DRIVE_WHEEL_DIAMETER = 0.1524; // 6 Inches in meters is 0.1524
     public static final double DISTANCE_PER_PULSE = (DRIVE_WHEEL_DIAMETER * Math.PI) / DRIVE_ENCODER_RESOLUTION;
     public static final double MAX_POWER = 0.8; // Max Power to the motors during Teleop mode
@@ -42,22 +42,45 @@ public final class Constants {
     
 
     //** LimeLight Camera */
-    public static final int KNOWN_TAPE_BOUND_WIDTH = 5; // Width of the tape
-    public static final int FOCAL_LENGTH = 0; //** This is an equation of some kind pulled from this repo: https://github.com/Yeti-Robotics/Y3T1-java-2021/blob/master/src/main/java/frc/robot/RobotContainer.java*/
+    public static final double KNOWN_DISTANCE = 3.048; // 10 Feet (120 inches in meters)
+    public static final int PIXEL_WIDTH_KNOWN = 60;
+    public static final double KNOWN_TAPE_BOUND_WIDTH = 0.3937; // Width of the tape (15.5 inches converted to meters)
+    public static final double FOCAL_LENGTH = (KNOWN_DISTANCE * PIXEL_WIDTH_KNOWN) / KNOWN_TAPE_BOUND_WIDTH; //** This is an equation of some kind pulled from this repo: https://github.com/Yeti-Robotics/Y3T1-java-2021/blob/master/src/main/java/frc/robot/RobotContainer.java */
     public static final int WIDTH = 960;
     public static final int HEIGHT = 720;
     public static final double FOV_SUB_H = 59.6;
     public static final double FOV_SUB_V = 45.7;
 
+    //** Shooter */
+    public static final double SHOOTER_HEIGHT = 0.635; //(25 inches)
+    public static final double GRAVITY = 9.81; // Meters/sec^2
 
+    //** Intake System */
     public static final int EXTENDER_FORWARD = 2;
     public static final int EXTENDER_BACKWARDS = 3;
     public static final int INTAKE_VICTOR = 4;
+
+    //** Ball Processing System */
+    public static final int TOWER_FEED_MOTOR = 5; // Tower
+    public static final int BREAKLIGHT_PORT = 0; // Breakbeam sensor
 
     public static final int COLOR_SENSOR = 1;
     public static final int BREAK_LIGHT = 2;
     public static final int BACK_FEED = 3;
 
     public static final int SHOOTER_MOTOR = 6;
+    public static final int INTAKE_BUTTON = 0;
+    public static final int SHOOT_BUTTON = 0;
+    public static final int CLIMB_BUTTON = 0;
+
+    //** Climber System */
+    public static final int CLIMBER_MOTOR_1 = 7;
+    public static final int CLIMBER_MOTOR_2 = 8;
+    public static final int SHOOTER_MOTOR_TWO = 0;
+    public static final int ORANGE_RIGHT = 0;
+    public static final int ORANGE_LEFT = 0;
+    public static final int LOWER_TOWER_MOTOR = 0;
+    public static final int UPPER_TOWER_MOTOR = 0;
+    public static final int STRAY_TOWER_MOTOR = 0;
     
 }
