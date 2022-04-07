@@ -20,18 +20,16 @@ import edu.wpi.first.math.controller.RamseteController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 
 public class BlueTwoBall_Two extends CommandBase {
+  RamseteCommand ramsete;
   /** Creates a new BlueTwoBall_One. */
   public BlueTwoBall_Two() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.m_robotDrive);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
-
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
+  public void initialize() {
     String trajectoryJSON = "output/BlueTwoBall2.wpilib.json";
     Trajectory Trajectory = new Trajectory();
     
@@ -45,7 +43,7 @@ public class BlueTwoBall_Two extends CommandBase {
       DriverStation.reportError("Unable to open trajectory: " + trajectoryJSON, ex.getStackTrace());
     }
 
-    RamseteCommand ramseteCommand =
+    ramsete =
         new RamseteCommand(
             Trajectory, // To use the example trajectory just replace this with exampleTrajectory.
             RobotContainer.m_robotDrive::getPose,
@@ -68,6 +66,13 @@ public class BlueTwoBall_Two extends CommandBase {
     // Run path following command, then stop at the end.
     return;
     //return ramseteCommand.andThen(() -> RobotContainer.m_robotDrive.tankDriveVolts(0, 0)); // Does this stop the robot?
+  }
+
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
+    ramsete.execute();
+    RobotContainer.m_robotDrive.tankDriveVolts(0,0);
   }
 
   // Called once the command ends or is interrupted.

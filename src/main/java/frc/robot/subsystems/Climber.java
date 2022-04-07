@@ -13,7 +13,7 @@ public class Climber extends SubsystemBase {
   /** Creates a new Climber. */
   public Climber() {
     // Rev NEO Brushless Motors
-    CANSparkMax climberMotor1 = new CANSparkMax(Constants.CLIMBER_MOTOR_1, CANSparkMax.MotorType.kBrushless);
+    CANSparkMax climbMotor1 = new CANSparkMax(Constants.CLIMBER_MOTOR_1, CANSparkMax.MotorType.kBrushless);
     CANSparkMax climbMotor2 = new CANSparkMax(Constants.CLIMBER_MOTOR_2, CANSparkMax.MotorType.kBrushless);
   }
 

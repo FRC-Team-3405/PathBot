@@ -4,31 +4,29 @@
 
 package frc.robot;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List; // REMOVE FOR EXAMPLE?
+// import java.io.IOException; // Ramsete
+// import java.nio.file.Path; // Ramsete
+// import java.util.List; // REMOVE FOR EXAMPLE?
 
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.RamseteController;
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
-// import edu.wpi.first.wpilibj2.command.button.JoystickButton; // REMOVE FOR EXAMPLE?
-import edu.wpi.first.math.geometry.Pose2d; // REMOVE FOR EXAMPLE?
-import edu.wpi.first.math.geometry.Rotation2d; // REMOVE FOR EXAMPLE?
-import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.math.trajectory.Trajectory;
-import edu.wpi.first.math.trajectory.TrajectoryConfig; // REMOVE FOR EXAMPLE?
-import edu.wpi.first.math.trajectory.TrajectoryGenerator; // REMOVE FOR EXAMPLE?
-import edu.wpi.first.math.trajectory.TrajectoryUtil;
-import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint; // REMOVE FOR EXAMPLE?
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Filesystem;
+// import edu.wpi.first.math.controller.PIDController; // Ramsete
+// import edu.wpi.first.math.controller.RamseteController; // Ramsete
+// import edu.wpi.first.math.controller.SimpleMotorFeedforward; // Ramsete
+// import edu.wpi.first.math.geometry.Pose2d; // REMOVE FOR EXAMPLE?
+// import edu.wpi.first.math.geometry.Rotation2d; // REMOVE FOR EXAMPLE?
+// import edu.wpi.first.math.geometry.Translation2d; // Ramsete
+// import edu.wpi.first.math.trajectory.Trajectory; // Ramsete
+// import edu.wpi.first.math.trajectory.TrajectoryConfig; // REMOVE FOR EXAMPLE?
+// import edu.wpi.first.math.trajectory.TrajectoryGenerator; // REMOVE FOR EXAMPLE?
+// import edu.wpi.first.math.trajectory.TrajectoryUtil; // Ramsete
+// import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint; // REMOVE FOR EXAMPLE?
+// import edu.wpi.first.wpilibj.DriverStation; // Ramsete
+// import edu.wpi.first.wpilibj.Filesystem; // Ramsete
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RamseteCommand;
-import edu.wpi.first.wpilibj2.command.button.Button;
+// import edu.wpi.first.wpilibj2.command.RamseteCommand; // Ramsete
 import frc.robot.commands.*;
 import frc.robot.commands.autocommands.*;
 import frc.robot.commands.autoroutines.*;

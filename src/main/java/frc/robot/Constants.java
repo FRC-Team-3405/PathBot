@@ -74,8 +74,8 @@ public final class Constants {
     public static final int CLIMB_BUTTON = 0;
 
     //** Climber System */
-    public static final int CLIMBER_MOTOR_1 = 7;
-    public static final int CLIMBER_MOTOR_2 = 8;
+    public static final int CLIMBER_MOTOR_1 = 11;
+    public static final int CLIMBER_MOTOR_2 = 12;
     public static final int SHOOTER_MOTOR_TWO = 0;
     public static final int ORANGE_RIGHT = 0;
     public static final int ORANGE_LEFT = 0;
