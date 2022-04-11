@@ -5,43 +5,33 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.BallProcessing;
+import frc.robot.RobotContainer;
 
-public class doIntake extends CommandBase {
-  /** Creates a new Intake. */
-  public doIntake() {
+public class Retract extends CommandBase {
+  /** Creates a new Retract. */
+  public Retract() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.m_intake);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (!BallProcessing.isBroken()) {
-      Intake.extend();
-      Intake.setMotor(true);
-    }
-    else {
-      Intake.retract();
-      Intake.setMotor(false);
-    }
+    System.out.println("Retractor engaged!");
+    RobotContainer.m_intake.retract();
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    Intake.retract();
-    Intake.setMotor(false);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

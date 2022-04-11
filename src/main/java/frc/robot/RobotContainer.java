@@ -35,6 +35,7 @@ public class RobotContainer {
   PneumaticsControlModule pcmboard = new PneumaticsControlModule(Constants.PCM_PORT);
   
   public static DriveTrain m_robotDrive;
+  public static Intake m_intake;
   public static final Shooter m_shooter = new Shooter();
   public static final Climber m_climber = new Climber();
   public static XboxController airflo = new XboxController(0);
@@ -43,7 +44,7 @@ public class RobotContainer {
   // Joystick Buttons
   // Primary Driver
   JoystickButton alignButton, shiftHighButton, shiftLowButton, 
-      intakeButton, shootButton, climbToggleButton, climbButton, retractButton;
+      intakeButton, shootButton, climbToggleButton, climbButton, retractButton, intakeExtendButton, intakeRetractButton;
 
 
   // Autonomous Chooser
@@ -63,10 +64,13 @@ public class RobotContainer {
     shootButton = new JoystickButton(xbox2, Constants.SHOOT_BUTTON);
     climbButton = new JoystickButton(xbox2, Constants.CLIMB_BUTTON_EXTEND);
     retractButton = new JoystickButton(xbox2, Constants.CLIMB_BUTTON_RETRACT);
+    intakeExtendButton = new JoystickButton(xbox2, Constants.INTAKE_EXTEND_BUTTON);
+    intakeRetractButton = new JoystickButton(xbox2, Constants.INTAKE_RETRACT_BUTTON);
 
 
     m_shooter.setDefaultCommand(new ShootBall());
     m_climber.setDefaultCommand(new Climb());
+    
 
     // Autonomous Routine Selector
     m_auto_chooser = new SendableChooser<Command>();
