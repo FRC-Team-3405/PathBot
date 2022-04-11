@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+
 // import java.io.IOException; // Ramsete
 // import java.nio.file.Path; // Ramsete
 // import java.util.List; // REMOVE FOR EXAMPLE?
@@ -22,10 +24,15 @@ package frc.robot;
 // import edu.wpi.first.wpilibj.DriverStation; // Ramsete
 // import edu.wpi.first.wpilibj.Filesystem; // Ramsete
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.PneumaticsControlModule;
+import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.FunctionalCommand;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.StartEndCommand;
 // import edu.wpi.first.wpilibj2.command.RamseteCommand; // Ramsete
 import frc.robot.commands.*;
 import frc.robot.commands.autocommands.*;
@@ -43,14 +50,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  public static final DriveTrain m_robotDrive = new DriveTrain();
+  // PowerDistribution pdpboard = new PowerDistribution(Constants.POWER_DISTRO_ID, Po);
+  PneumaticsControlModule pcmboard = new PneumaticsControlModule(Constants.PCM_PORT);
+  
+  public static DriveTrain m_robotDrive;
   public static final Shooter m_shooter = new Shooter();
+  public static final Climber m_climber = new Climber();
   public static XboxController airflo = new XboxController(0);
   public static XboxController xbox2 = new XboxController(1);
 
   // Joystick Buttons
   // Primary Driver
-  JoystickButton alignButton, shiftHighButton, shiftLowButton, intakeButton, shootButton, climbButton;
+  JoystickButton alignButton, shiftHighButton, shiftLowButton, 
+      intakeButton, shootButton, climbToggleButton, climbButton, retractButton;
 
 
   // Autonomous Chooser
@@ -58,6 +70,9 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    DoubleSolenoid shifter = pcmboard.makeDoubleSolenoid(Constants.HIGHGEAR, Constants.LOWGEAR);
+
+    m_robotDrive = new DriveTrain(shifter);
     // Primary Driver Joystick Buttons
     alignButton = new JoystickButton(airflo, Constants.ALIGN_ROBOT_BUTTON);
     shiftHighButton = new JoystickButton(airflo, Constants.SHIFT_HIGHGEAR_BUTTON);
@@ -65,7 +80,12 @@ public class RobotContainer {
     // Secondary Driver Joystick Buttons
     intakeButton = new JoystickButton(xbox2, Constants.INTAKE_BUTTON);
     shootButton = new JoystickButton(xbox2, Constants.SHOOT_BUTTON);
-    climbButton = new JoystickButton(xbox2, Constants.CLIMB_BUTTON);
+    climbButton = new JoystickButton(xbox2, Constants.CLIMB_BUTTON_EXTEND);
+    retractButton = new JoystickButton(xbox2, Constants.CLIMB_BUTTON_RETRACT);
+
+
+    m_shooter.setDefaultCommand(new ShootBall());
+    m_climber.setDefaultCommand(new Climb());
 
     // Autonomous Routine Selector
     m_auto_chooser = new SendableChooser<Command>();
@@ -91,14 +111,19 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     // Primary Driver
-    alignButton.whileHeld(new AlignRobot());
+    alignButton.whenPressed(new AlignRobot());
     shiftHighButton.whenPressed(new ShiftHigh());
+    
+    //shiftHighButton.whenPressed(new InstantCommand(() -> DriveTrain.shiftHigh(), m_robotDrive));
+    //shiftHighButton.whenPressed(new FunctionalCommand(() -> System.out.println("I'm running!"), ()->{}, ()->{}, alignButton, ()->{}));
     shiftLowButton.whenPressed(new ShiftLow());
 
+
     // Secondary Driver
-    intakeButton.whenPressed(new doIntake());
-    //shootButton.whenPressed(new Shoot());
+    // intakeButton.whenPressed(new doIntake());
     //climbButton.whenPressed(new Climb());
+    // climbButton.whenPressed(new InstantCommand(() -> { m_climber.extendTime = true; }, m_climber));
+    
   }
 
   /**
@@ -107,7 +132,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return m_auto_chooser.getSelected();
+    return new DriveForward();
     //   if (true)
   //     return new AlignRobot();
 

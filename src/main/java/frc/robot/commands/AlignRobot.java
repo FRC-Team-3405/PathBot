@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.DriveTrain;
 import frc.robot.utils.Limelight;
 import frc.robot.utils.Limelight.LightMode;
 import edu.wpi.first.wpilibj.Timer;
@@ -37,9 +38,10 @@ public class AlignRobot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    
     if (!Limelight.isTarget()) {
       System.out.println("There is no target here.");
-      RobotContainer.m_robotDrive.tankDriveVolts(5, -5);
+      RobotContainer.m_robotDrive.tankDriveVolts(1, -1);
       return;
     }
     

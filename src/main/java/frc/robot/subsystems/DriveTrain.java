@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.StatorCurrentLimitConfiguration;
+import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.math.geometry.Pose2d;
@@ -12,7 +14,9 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PneumaticsControlModule;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
@@ -22,26 +26,32 @@ import frc.robot.DriveConstants;
 
 public class DriveTrain extends SubsystemBase {
   // Shifter Status
-  public enum ShifterStatus{
-    HIGH, LOW
-  }
-  public static ShifterStatus shifterStatus;
+  // public enum ShifterStatus{
+  //   HIGH, LOW
+  //}
+  // public static ShifterStatus shifterStatus;
   // Compressor
-  Compressor m_comp = new Compressor(Constants.COMPRESSOR_PORT, PneumaticsModuleType.CTREPCM); // Instantiate a Compressor
-  DoubleSolenoid m_shift = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.HIGHGEAR, Constants.LOWGEAR);
+   // Instantiate a Compressor
+  public static DoubleSolenoid m_shift;
+
+  private final WPI_TalonFX frontLeft = new WPI_TalonFX(DriveConstants.FL_TALONFX);
+  private final WPI_TalonFX backLeft = new WPI_TalonFX(DriveConstants.BL_TALONFX);
+  private final WPI_TalonFX frontRight = new WPI_TalonFX(DriveConstants.FR_TALONFX);
+  private final WPI_TalonFX backRight = new WPI_TalonFX(DriveConstants.BR_TALONFX);
+  
 
   // The motors on the left side of the drive.
   // The motors on the right side of the drive.
   private final MotorControllerGroup m_leftMotors =
       new MotorControllerGroup(
-          new WPI_TalonFX(DriveConstants.FL_TALONFX),
-          new WPI_TalonFX(DriveConstants.BL_TALONFX));
+          frontLeft,
+          backLeft);
 
   // The motors on the right side of the drive.
   private final MotorControllerGroup m_rightMotors =
       new MotorControllerGroup(
-          new WPI_TalonFX(DriveConstants.FR_TALONFX),
-          new WPI_TalonFX(DriveConstants.BR_TALONFX));
+          frontRight,
+          backRight);
 
   // The robot's drive
   private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
@@ -66,8 +76,22 @@ public class DriveTrain extends SubsystemBase {
   // Odometry class for tracking robot pose
   private final DifferentialDriveOdometry m_odometry;
 
+  void setFalconLimit(WPI_TalonFX talon) {
+    talon.configSupplyCurrentLimit(
+      new SupplyCurrentLimitConfiguration(true, 39, 40, 10)
+    );
+    talon.configStatorCurrentLimit(
+      new StatorCurrentLimitConfiguration(true, 70, 90, 1.0)
+    );
+  }
+
   /** Creates a new DriveSubsystem. */
-  public DriveTrain() {
+  public DriveTrain(DoubleSolenoid shifter) {
+    setFalconLimit(frontRight);
+    setFalconLimit(backRight);
+    setFalconLimit(frontLeft);
+    setFalconLimit(backLeft);
+
     // Shift Gears
     // We need to invert one side of the drivetrain so that positive voltages
     // result in both sides moving forward. Depending on how your robot's
@@ -80,17 +104,21 @@ public class DriveTrain extends SubsystemBase {
 
     resetEncoders();
     m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
+    m_shift = shifter;
   }
   
   // Shift to High Gear, Update the SmartDashboard to show we are in HIGH gear
   public void shiftHigh(){
-    m_shift.set(DoubleSolenoid.Value.kForward);
-    shifterStatus = ShifterStatus.HIGH;}
+    m_shift.set(Value.kForward);
+    System.out.println(m_shift);
+    //shifterStatus = ShifterStatus.HIGH;
+  }
 
   // Shift to Low Gear, Update the SmartDashboard to show we are in LOW gear
   public void shiftLow(){
-    m_shift.set(DoubleSolenoid.Value.kReverse);
-    shifterStatus = ShifterStatus.LOW;}
+    m_shift.set(Value.kReverse);
+    //shifterStatus = ShifterStatus.LOW;
+  }
 
   // Test Stuff
   NetworkTableEntry m_xEntry = NetworkTableInstance.getDefault().getTable("troubleshooting").getEntry("X");
@@ -228,7 +256,7 @@ public class DriveTrain extends SubsystemBase {
   public double getTurnRate() {
     return -m_gyro.getRate();
   }
-  public static ShifterStatus getShifterGear() {
-    return shifterStatus;
-  }
+  // public static ShifterStatus getShifterGear() {
+  //   return shifterStatus;
+  // }
 }

@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -12,7 +13,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.subsystems.*;
-import frc.robot.subsystems.DriveTrain.ShifterStatus;
+//import frc.robot.subsystems.DriveTrain.ShifterStatus;
 import frc.robot.utils.Limelight;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.CvSink;
@@ -20,6 +21,8 @@ import edu.wpi.first.cscore.CvSource;
 import edu.wpi.first.cscore.UsbCamera;
 import org.opencv.core.Mat;
 import frc.robot.utils.Limelight.LightMode;
+import edu.wpi.first.wpilibj.PowerDistribution;
+import edu.wpi.first.wpilibj.PneumaticsControlModule;
 
 
 /**
@@ -139,13 +142,13 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("hor distance", Limelight.getHorDistance());
 
-    // Post different values to troubleshoot the bot from a distance
-    if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.HIGH) {
-      SmartDashboard.putString("Shifter Gear", "HIGH");
-    } // Shifter Status (Set to HIGH)
-    else if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.LOW) {
-      SmartDashboard.putString("Shifter Gear", "LOW");
-    } // Shifter Status (Set to LOW)
+    // // Post different values to troubleshoot the bot from a distance
+    // if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.HIGH) {
+    //   SmartDashboard.putString("Shifter Gear", "HIGH");
+    // } // Shifter Status (Set to HIGH)
+    // else if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.LOW) {
+    //   SmartDashboard.putString("Shifter Gear", "LOW");
+    // } // Shifter Status (Set to LOW)
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
@@ -154,12 +157,12 @@ public class Robot extends TimedRobot {
     // ** I'm not sure why this value is never getting put on the dashboard. Perhaps
     // I need to call a shifter button to have it publish? */
     // Post different values to troubleshoot the bot from a distance
-    if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.HIGH) {
-      SmartDashboard.putString("Shifter Gear", "HIGH");
-    } // Shifter Status (Set to HIGH)
-    else if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.LOW) {
-      SmartDashboard.putString("Shifter Gear", "LOW");
-    } // Shifter Status (Set to LOW)
+    // if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.HIGH) {
+    //   SmartDashboard.putString("Shifter Gear", "HIGH");
+    // } // Shifter Status (Set to HIGH)
+    // else if (frc.robot.subsystems.DriveTrain.getShifterGear() == ShifterStatus.LOW) {
+    //   SmartDashboard.putString("Shifter Gear", "LOW");
+    // } // Shifter Status (Set to LOW)
   }
 
   @Override

@@ -22,12 +22,24 @@ public class ShootBall extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.tower(0.7);
+    if (RobotContainer.xbox2.getRightBumper()) {
+      RobotContainer.m_shooter.shoot(-1);
+    } else {
+      RobotContainer.m_shooter.shoot(0);
+    }
+    
+    if (RobotContainer.xbox2.getRightTriggerAxis() > .1) {
+      RobotContainer.m_shooter.tower(-RobotContainer.xbox2.getRightTriggerAxis());
+    } else {
+      RobotContainer.m_shooter.tower(0);
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    // RobotContainer.m_shooter.tower(0);
+  }
 
   // Returns true when the command should end.
   @Override
