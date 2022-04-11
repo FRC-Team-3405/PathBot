@@ -18,7 +18,7 @@ public class B2B1 extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new ParallelCommandGroup(new BlueTwoBall_One(), new doIntake()), 
+      new ParallelCommandGroup(new BlueTwoBall_One()), 
       new AlignRobot());
   }
 }

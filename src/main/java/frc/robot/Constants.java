@@ -34,8 +34,10 @@ public final class Constants {
     public static final int SHOOT_BALL = 4; // Run the motors to shoot the ball!
     public static final int INTAKE_BUTTON = 5;
     public static final int SHOOT_BUTTON = 6;
-    public static final int CLIMB_BUTTON_EXTEND = 1;
-    public static final int CLIMB_BUTTON_RETRACT = 4; // CHECK THIS
+    public static final int CLIMB_BUTTON_EXTEND = 1; // A Button
+    public static final int CLIMB_BUTTON_RETRACT = 4; // CHECK THIS; Y Button
+    public static final int INTAKE_EXTEND_BUTTON = 2; // B Button
+    public static final int INTAKE_RETRACT_BUTTON = 3; // X Button
 
     //** DriveTrain */
     //public static final double DRIVE_ENCODER_RESOLUTION = 8192.0; // Rev's ThroughBore Encoders read 8192 ticks per rotation.
