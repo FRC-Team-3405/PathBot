@@ -11,7 +11,7 @@ public class Extend extends CommandBase {
   /** Creates a new Extend. */
   public Extend() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_intake);
+    //addRequirements(RobotContainer.m_intake);
   }
 
   // Called when the command is initially scheduled.
@@ -22,7 +22,7 @@ public class Extend extends CommandBase {
   @Override
   public void execute() {
     System.out.println("Extender Forward!");
-    RobotContainer.m_intake.extend();
+    // RobotContainer.m_intake.extend();
   }
 
   // Called once the command ends or is interrupted.

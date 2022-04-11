@@ -23,7 +23,13 @@ public class ShiftHigh extends CommandBase {
   @Override
   public void execute() {
     System.out.println("This button is working!");
-    RobotContainer.m_robotDrive.shiftHigh();
+    // RobotContainer.m_robotDrive.shiftHigh();
+    if (RobotContainer.airflo.getRawButtonPressed(6)) {
+      RobotContainer.m_robotDrive.shiftHigh();
+    } 
+    if (RobotContainer.airflo.getRawButtonPressed(5)) {
+      RobotContainer.m_robotDrive.shiftLow();
+    }
   }
 
   // Called once the command ends or is interrupted.

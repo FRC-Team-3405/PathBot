@@ -21,7 +21,7 @@ public class Intake extends SubsystemBase {
         extender = retracter;
     }
 
-    public static void setMotor(boolean on) {
+    public void setMotor(boolean on) {
         if (on) {
             motor.set(ControlMode.PercentOutput, .5); // Intake Motor
             orangeRight.set(ControlMode.PercentOutput, .3); // Spinny Orange Wheel

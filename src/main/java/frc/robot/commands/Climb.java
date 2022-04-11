@@ -23,13 +23,13 @@ public class Climb extends CommandBase {
   public void execute() {
     System.out.println(RobotContainer.xbox2.getAButton());
     if (RobotContainer.xbox2.getAButton()) {
-      RobotContainer.m_climber.setSpeed(-.1);
+      RobotContainer.m_climber.setSpeed(-.4);
     } else {
       RobotContainer.m_climber.setSpeed(0);
     }
     
     if (RobotContainer.xbox2.getYButton()) {
-      RobotContainer.m_climber.setSpeed(.1);
+      RobotContainer.m_climber.setSpeed(.4);
     } else {
       RobotContainer.m_climber.setSpeed(0);
     }

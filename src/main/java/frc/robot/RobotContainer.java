@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
 // import edu.wpi.first.wpilibj2.command.FunctionalCommand;
-// import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 // import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import frc.robot.commands.*;
 import frc.robot.commands.autocommands.*;
@@ -35,7 +35,7 @@ public class RobotContainer {
   PneumaticsControlModule pcmboard = new PneumaticsControlModule(Constants.PCM_PORT);
   
   public static DriveTrain m_robotDrive;
-  public static Intake m_intake;
+  // public static Intake m_intake = new Intake(null);
   public static final Shooter m_shooter = new Shooter();
   public static final Climber m_climber = new Climber();
   public static XboxController airflo = new XboxController(0);
@@ -44,7 +44,8 @@ public class RobotContainer {
   // Joystick Buttons
   // Primary Driver
   JoystickButton alignButton, shiftHighButton, shiftLowButton, 
-      intakeButton, shootButton, climbToggleButton, climbButton, retractButton, intakeExtendButton, intakeRetractButton;
+      intakeButton, shootButton, climbToggleButton, climbButton, 
+      climbButton2, retractButton, intakeExtendButton, intakeRetractButton, pullButton;
 
 
   // Autonomous Chooser
@@ -63,9 +64,11 @@ public class RobotContainer {
     intakeButton = new JoystickButton(xbox2, Constants.INTAKE_BUTTON);
     shootButton = new JoystickButton(xbox2, Constants.SHOOT_BUTTON);
     climbButton = new JoystickButton(xbox2, Constants.CLIMB_BUTTON_EXTEND);
+    climbButton2 = new JoystickButton(xbox2, Constants.CLIMB_BUTTON_RETRACT);
     retractButton = new JoystickButton(xbox2, Constants.CLIMB_BUTTON_RETRACT);
     intakeExtendButton = new JoystickButton(xbox2, Constants.INTAKE_EXTEND_BUTTON);
     intakeRetractButton = new JoystickButton(xbox2, Constants.INTAKE_RETRACT_BUTTON);
+    pullButton = new JoystickButton(xbox2, 5);
 
 
     m_shooter.setDefaultCommand(new ShootBall());
@@ -97,16 +100,17 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // Primary Driver
     alignButton.whenPressed(new AlignRobot());
-    shiftHighButton.whenPressed(new ShiftHigh());
+    //shiftHighButton.whenPressed(new ShiftHigh());
     
-    //shiftHighButton.whenPressed(new InstantCommand(() -> DriveTrain.shiftHigh(), m_robotDrive));
+    // shiftHighButton.whenPressed(new ShiftHigh());
     //shiftHighButton.whenPressed(new FunctionalCommand(() -> System.out.println("I'm running!"), ()->{}, ()->{}, alignButton, ()->{}));
-    shiftLowButton.whenPressed(new ShiftLow());
+    //shiftLowButton.whenPressed(new ShiftLow());
+    pullButton.whenHeld(new Pull());
 
 
     // Secondary Driver
     // intakeButton.whenPressed(new doIntake());
-    //climbButton.whenPressed(new Climb());
+    // climbButton2.whenPressed(new Climb());
     // climbButton.whenPressed(new InstantCommand(() -> { m_climber.extendTime = true; }, m_climber));
     
   }

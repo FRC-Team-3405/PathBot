@@ -7,11 +7,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class Retract extends CommandBase {
-  /** Creates a new Retract. */
-  public Retract() {
+public class Pull extends CommandBase {
+  /** Creates a new Pull. */
+  public Pull() {
     // Use addRequirements() here to declare subsystem dependencies.
-   // addRequirements(RobotContainer.m_intake);
+    //addRequirements(RobotContainer.m_intake);
   }
 
   // Called when the command is initially scheduled.
@@ -21,8 +21,7 @@ public class Retract extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("Retractor engaged!");
-    // RobotContainer.m_intake.retract();
+    // RobotContainer.m_intake.setMotor(true);
   }
 
   // Called once the command ends or is interrupted.
