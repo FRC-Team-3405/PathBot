@@ -4,11 +4,8 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.DriveTrain;
 
 public class ShiftHigh extends CommandBase {
   /** Creates a new ShiftHigh. */

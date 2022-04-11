@@ -6,34 +6,15 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
-// import java.io.IOException; // Ramsete
-// import java.nio.file.Path; // Ramsete
-// import java.util.List; // REMOVE FOR EXAMPLE?
-
-// import edu.wpi.first.math.controller.PIDController; // Ramsete
-// import edu.wpi.first.math.controller.RamseteController; // Ramsete
-// import edu.wpi.first.math.controller.SimpleMotorFeedforward; // Ramsete
-// import edu.wpi.first.math.geometry.Pose2d; // REMOVE FOR EXAMPLE?
-// import edu.wpi.first.math.geometry.Rotation2d; // REMOVE FOR EXAMPLE?
-// import edu.wpi.first.math.geometry.Translation2d; // Ramsete
-// import edu.wpi.first.math.trajectory.Trajectory; // Ramsete
-// import edu.wpi.first.math.trajectory.TrajectoryConfig; // REMOVE FOR EXAMPLE?
-// import edu.wpi.first.math.trajectory.TrajectoryGenerator; // REMOVE FOR EXAMPLE?
-// import edu.wpi.first.math.trajectory.TrajectoryUtil; // Ramsete
-// import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint; // REMOVE FOR EXAMPLE?
-// import edu.wpi.first.wpilibj.DriverStation; // Ramsete
-// import edu.wpi.first.wpilibj.Filesystem; // Ramsete
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
-import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.FunctionalCommand;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.StartEndCommand;
-// import edu.wpi.first.wpilibj2.command.RamseteCommand; // Ramsete
+// import edu.wpi.first.wpilibj2.command.FunctionalCommand;
+// import edu.wpi.first.wpilibj2.command.InstantCommand;
+// import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import frc.robot.commands.*;
 import frc.robot.commands.autocommands.*;
 import frc.robot.commands.autoroutines.*;

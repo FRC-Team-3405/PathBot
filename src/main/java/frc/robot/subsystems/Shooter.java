@@ -9,7 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.commands.ShootBall;
+// import frc.robot.commands.ShootBall;
 
 public class Shooter extends SubsystemBase {
     WPI_TalonFX rightShooter = new WPI_TalonFX(Constants.SHOOTER_MOTOR);

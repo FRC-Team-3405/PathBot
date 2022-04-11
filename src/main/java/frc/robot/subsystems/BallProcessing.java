@@ -5,7 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.AnalogInput;
+// import edu.wpi.first.wpilibj.AnalogInput;
 
 public class BallProcessing {
     private static DigitalInput breakLight = new DigitalInput(Constants.BREAKLIGHT_PORT);
