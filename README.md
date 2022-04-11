@@ -13,7 +13,7 @@ The robot is driven using a Differential Drive (```arcadeDrive```).
 ### Secondary Driver Controller Map (Xbox Controller)
 
 - ```A Button```: Move climber arm down
-- ```Y Button```: Move climer arm up
+- ```Y Button```: Move climber arm up
 - ```Right Bumper```: Spin the shooter Motors
 - ```Right Trigger```: Move the tower motors (feed the shooter)
 
