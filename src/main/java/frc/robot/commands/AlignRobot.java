@@ -47,8 +47,8 @@ public class AlignRobot extends CommandBase {
 
     double aX = scaleX(Limelight.getTx());
     double yaw = (aX / 2) * Constants.FOV_SUB_H;
-    System.out.println(aX);
-    System.out.println(yaw);
+    //System.out.println(aX);
+    //System.out.println(yaw);
   
     if (Math.abs(yaw) <= 5) {
       System.out.println("Your mom says this bot is aligned!");

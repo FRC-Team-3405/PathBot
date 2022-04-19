@@ -11,7 +11,7 @@ public class Retract extends CommandBase {
   /** Creates a new Retract. */
   public Retract() {
     // Use addRequirements() here to declare subsystem dependencies.
-   // addRequirements(RobotContainer.m_intake);
+   addRequirements(RobotContainer.m_intake);
   }
 
   // Called when the command is initially scheduled.
@@ -22,7 +22,7 @@ public class Retract extends CommandBase {
   @Override
   public void execute() {
     System.out.println("Retractor engaged!");
-    // RobotContainer.m_intake.retract();
+    //RobotContainer.m_intake.retract();
   }
 
   // Called once the command ends or is interrupted.

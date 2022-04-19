@@ -21,16 +21,22 @@ public class Climb extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println(RobotContainer.xbox2.getAButton());
-    if (RobotContainer.xbox2.getAButton()) {
-      RobotContainer.m_climber.setSpeed(-.4);
-    } else {
-      RobotContainer.m_climber.setSpeed(0);
-    }
+    //System.out.println(RobotContainer.xbox2.getAButton());
+    // if (RobotContainer.xbox2.getXButton()) {
+    //   System.out.println("A Button was pressed!");
+    //   RobotContainer.m_climber.setSpeed(0.4);
+    // } else {
+    //   RobotContainer.m_climber.setSpeed(0);
+    
+    //  }
     
     if (RobotContainer.xbox2.getYButton()) {
-      RobotContainer.m_climber.setSpeed(.4);
-    } else {
+      RobotContainer.m_climber.setSpeed(0.4);
+    } else if (RobotContainer.xbox2.getXButton()) {
+      RobotContainer.m_climber.setSpeed(-0.4);
+    }
+    else
+    {
       RobotContainer.m_climber.setSpeed(0);
     }
   }

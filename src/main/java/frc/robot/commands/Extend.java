@@ -11,7 +11,7 @@ public class Extend extends CommandBase {
   /** Creates a new Extend. */
   public Extend() {
     // Use addRequirements() here to declare subsystem dependencies.
-    //addRequirements(RobotContainer.m_intake);
+    addRequirements(RobotContainer.m_intake);
   }
 
   // Called when the command is initially scheduled.
@@ -21,8 +21,13 @@ public class Extend extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("Extender Forward!");
+    // if (xbox2.getBButtonPressed()){
+    //   this.intake_sol.toggle();
+    // }
     // RobotContainer.m_intake.extend();
+    System.out.println("B button pressed");
+    RobotContainer.m_intake.extend();
+    RobotContainer.m_intake.setMotor();
   }
 
   // Called once the command ends or is interrupted.

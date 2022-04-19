@@ -28,16 +28,16 @@ public final class Constants {
 
     // Joystick Controller (Secondary Driver)
     public static final int JOYSTICK = 1; // Joystick Controller Port
-    public static final int INTAKE_MOTOR_RUN = 1; // Run the intake motors to pick up balls
+    //public static final int INTAKE_MOTOR_RUN = 1; // Run the intake motors to pick up balls
     public static final int INTAKE_POSITION_PISTON = 2; // Piston to bring intake arm in and out
     public static final int READ_BALL_COLOR = 3; // Get the color sensor's reading, alert the user if the ball is red or blue.
     public static final int SHOOT_BALL = 4; // Run the motors to shoot the ball!
     public static final int INTAKE_BUTTON = 5;
     public static final int SHOOT_BUTTON = 6;
-    public static final int CLIMB_BUTTON_EXTEND = 1; // A Button
-    public static final int CLIMB_BUTTON_RETRACT = 4; // CHECK THIS; Y Button
-    public static final int INTAKE_EXTEND_BUTTON = 2; // B Button
-    public static final int INTAKE_RETRACT_BUTTON = 3; // X Button
+    //public static final int CLIMB_BUTTON_EXTEND = 1; // A Button
+    //public static final int CLIMB_BUTTON_RETRACT = 4; // CHECK THIS; Y Button
+    //public static final int INTAKE_EXTEND_BUTTON = 2; // B Button
+    //public static final int INTAKE_RETRACT_BUTTON = 3; // X Button
 
     //** DriveTrain */
     //public static final double DRIVE_ENCODER_RESOLUTION = 8192.0; // Rev's ThroughBore Encoders read 8192 ticks per rotation.
@@ -68,7 +68,10 @@ public final class Constants {
     //** Intake System */
     public static final int EXTENDER_FORWARD = 2;
     public static final int EXTENDER_BACKWARDS = 3;
-    public static final int INTAKE_VICTOR = 4;
+    public static final int INTAKE_VICTOR = 10;
+    public static final int INTAKE_IN = 6;
+    public static final int INTAKE_OUT = 7;
+    
 
     //** Ball Processing System */
     public static final int TOWER_FEED_MOTOR = 5; // Tower
