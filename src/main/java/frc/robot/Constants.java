@@ -30,7 +30,7 @@ public final class Constants {
     public static final int JOYSTICK = 1; // Joystick Controller Port
     //public static final int INTAKE_MOTOR_RUN = 1; // Run the intake motors to pick up balls
     public static final int INTAKE_POSITION_PISTON = 2; // Piston to bring intake arm in and out
-    public static final int READ_BALL_COLOR = 3; // Get the color sensor's reading, alert the user if the ball is red or blue.
+    //public static final int READ_BALL_COLOR = 3; // Get the color sensor's reading, alert the user if the ball is red or blue.
     public static final int SHOOT_BALL = 4; // Run the motors to shoot the ball!
     public static final int INTAKE_BUTTON = 5;
     public static final int SHOOT_BUTTON = 6;
@@ -47,8 +47,8 @@ public final class Constants {
     public static final double MAX_POWER = 0.8; // Max Power to the motors during Teleop mode
     public static final double MAX_TURN_POWER = 0.8; // Max Power to the motors while turning during Teleop mode
     public static final int COMPRESSOR_PORT = 0; // Compressor
-    public static final int HIGHGEAR = 0; // Double Solenoid kForward port
-    public static final int LOWGEAR = 1; // Double solenoid kReverse port
+    public static final int HIGHGEAR = 2; // Double Solenoid kForward port
+    public static final int LOWGEAR = 3; // Double solenoid kReverse port
     
 
     //** LimeLight Camera */
@@ -75,10 +75,10 @@ public final class Constants {
 
     //** Ball Processing System */
     public static final int TOWER_FEED_MOTOR = 5; // Tower
-    public static final int BREAKLIGHT_PORT = 0; // Breakbeam sensor
+    //public static final int BREAKLIGHT_PORT = 0; // Breakbeam sensor
 
-    public static final int COLOR_SENSOR = 1;
-    public static final int BREAK_LIGHT = 2;
+    //public static final int COLOR_SENSOR = 1;
+    //public static final int BREAK_LIGHT = 2;
     public static final int BACK_FEED = 3;
 
     public static final int SHOOTER_MOTOR = 20;
@@ -87,8 +87,8 @@ public final class Constants {
     public static final int CLIMBER_MOTOR_1 = 11;
     public static final int CLIMBER_MOTOR_2 = 12;
     public static final int SHOOTER_MOTOR_TWO = 21;
-    public static final int ORANGE_RIGHT = 0;
-    public static final int ORANGE_LEFT = 0;
+    public static final int ORANGE_RIGHT = 52;
+    public static final int ORANGE_LEFT = 53;
     public static final int LOWER_TOWER_MOTOR = 5;
     public static final int UPPER_TOWER_MOTOR = 6;
     public static final int STRAY_TOWER_MOTOR = 7;

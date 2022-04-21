@@ -16,10 +16,9 @@ public class Intake extends SubsystemBase {
     public static Boolean extended = false;
     
 
-    private static WPI_VictorSPX motor = new WPI_VictorSPX(Constants.INTAKE_VICTOR);
-    private static WPI_TalonSRX orangeRight = new WPI_TalonSRX(Constants.ORANGE_RIGHT);
-    private static WPI_TalonSRX orangeLeft = new WPI_TalonSRX(Constants.ORANGE_LEFT);
-
+    private static WPI_TalonSRX motor = new WPI_TalonSRX(Constants.INTAKE_VICTOR);
+    //private static WPI_TalonSRX orangeRight = new WPI_TalonSRX(Constants.ORANGE_RIGHT);
+    //private static WPI_TalonSRX orangeLeft = new WPI_TalonSRX(Constants.ORANGE_LEFT);
 
     public Intake() {
         extender = new DoubleSolenoid( PneumaticsModuleType.CTREPCM,Constants.INTAKE_IN,Constants.INTAKE_OUT);
@@ -27,15 +26,21 @@ public class Intake extends SubsystemBase {
     }
 
     public void setMotor() {
+        //** TALONSRX CURRENT LIMITS (Intake Motor) */
+        motor.configPeakCurrentLimit(30); // don't activate current limit until current exceeds 30 A ...
+        motor.configPeakCurrentDuration(100); // ... for at least 100 ms
+        motor.configContinuousCurrentLimit(15); // once current-limiting is actived, hold at 20A
+        motor.enableCurrentLimit(true);
+
         if (extended) {
             System.out.println("Intake Motor On");
             motor.set(ControlMode.PercentOutput, -1.0); // Intake Motor
-            orangeRight.set(ControlMode.PercentOutput, 0.3); // Spinny Orange Wheel
-            orangeRight.set(ControlMode.PercentOutput, -0.3); // Spinny Orange Wheel 2
+            //orangeRight.set(ControlMode.PercentOutput, 0.3); // Spinny Orange Wheel
+            //orangeRight.set(ControlMode.PercentOutput, -0.3); // Spinny Orange Wheel 2
         } else {
             motor.set(ControlMode.PercentOutput, 0.0);
-            orangeRight.set(ControlMode.PercentOutput, 0.0);
-            orangeLeft.set(ControlMode.PercentOutput, 0.0);
+            //orangeRight.set(ControlMode.PercentOutput, 0.0);
+            //orangeLeft.set(ControlMode.PercentOutput, 0.0);
         }
     }
 

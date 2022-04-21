@@ -8,7 +8,7 @@ import frc.robot.Constants;
 // import edu.wpi.first.wpilibj.AnalogInput;
 
 public class BallProcessing {
-    private static DigitalInput breakLight = new DigitalInput(Constants.BREAKLIGHT_PORT);
+   // private static DigitalInput breakLight = new DigitalInput(Constants.BREAKLIGHT_PORT);
     private WPI_VictorSPX towerFeed = new WPI_VictorSPX(Constants.TOWER_FEED_MOTOR);
 
     public enum Feed {
@@ -30,7 +30,7 @@ public class BallProcessing {
         }
     }
 
-    public static boolean isBroken() {
-        return breakLight.get();
+    //public static boolean isBroken() {
+        //return breakLight.get();
     }
-}
+//}

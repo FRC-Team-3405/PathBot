@@ -46,7 +46,7 @@ public class RobotContainer {
 
   // Joystick Buttons
   // Primary Driver
-  JoystickButton alignButton, shiftHighButton, shiftLowButton, 
+  JoystickButton alignButton, shiftButton, 
       intakeButton, shootButton, climbToggleButton, climbButton, 
       climbButton2, retractButton, intakeExtendButton, intakeRetractButton,btn_intake_arm;
 
@@ -54,20 +54,19 @@ public class RobotContainer {
   // Autonomous Chooser
   final SendableChooser<Command> m_auto_chooser;
 
-  private DoubleSolenoid intake_sol;
+  // private DoubleSolenoid intake_sol;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    DoubleSolenoid shifter = pcmboard.makeDoubleSolenoid(Constants.HIGHGEAR, Constants.LOWGEAR);
+    //DoubleSolenoid shifter = pcmboard.makeDoubleSolenoid(Constants.HIGHGEAR, Constants.LOWGEAR);
     //intake_sol = new DoubleSolenoid(PneumaticsModuleType.CTREPCM,Constants.INTAKE_IN,Constants.INTAKE_OUT);
     //intake_sol.set(Value.kReverse);
 
-    m_robotDrive = new DriveTrain(shifter);
+    m_robotDrive = new DriveTrain();
     m_intake = new Intake();
     // Primary Driver Joystick Buttons
     alignButton = new JoystickButton(airflo, Constants.ALIGN_ROBOT_BUTTON);
-    shiftHighButton = new JoystickButton(airflo, Constants.SHIFT_HIGHGEAR_BUTTON);
-    shiftLowButton = new JoystickButton(airflo, Constants.SHIFT_LOWGEAR_BUTTON);
+    shiftButton = new JoystickButton(airflo, Constants.SHIFT_HIGHGEAR_BUTTON);
     // Secondary Driver Joystick Buttons
     //intakeButton = new JoystickButton(xbox2, Constants.INTAKE_BUTTON);
     shootButton = new JoystickButton(xbox2, Constants.SHOOT_BUTTON);
@@ -108,7 +107,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // Primary Driver
     alignButton.whenPressed(new AlignRobot());
-    //shiftHighButton.whenPressed(new ShiftHigh());
+    shiftButton.whenPressed(new ShiftGears());
     
     // shiftHighButton.whenPressed(new ShiftHigh());
     //shiftHighButton.whenPressed(new FunctionalCommand(() -> System.out.println("I'm running!"), ()->{}, ()->{}, alignButton, ()->{}));

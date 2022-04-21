@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 // import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 // import edu.wpi.first.wpilibj.PneumaticsControlModule;
 // import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -32,7 +33,8 @@ public class DriveTrain extends SubsystemBase {
   // public static ShifterStatus shifterStatus;
   // Compressor
    // Instantiate a Compressor
-  public static DoubleSolenoid m_shift;
+  public static DoubleSolenoid m_shift = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.HIGHGEAR, Constants.LOWGEAR);
+  public static boolean LowGear = false;
 
   private final WPI_TalonFX frontLeft = new WPI_TalonFX(DriveConstants.FL_TALONFX);
   private final WPI_TalonFX backLeft = new WPI_TalonFX(DriveConstants.BL_TALONFX);
@@ -86,11 +88,12 @@ public class DriveTrain extends SubsystemBase {
   }
 
   /** Creates a new DriveSubsystem. */
-  public DriveTrain(DoubleSolenoid shifter) {
+  public DriveTrain() {
     setFalconLimit(frontRight);
     setFalconLimit(backRight);
     setFalconLimit(frontLeft);
     setFalconLimit(backLeft);
+    m_shift.set(Value.kForward);
 
     // Shift Gears
     // We need to invert one side of the drivetrain so that positive voltages
@@ -104,7 +107,6 @@ public class DriveTrain extends SubsystemBase {
 
     resetEncoders();
     m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
-    m_shift = shifter;
   }
   
   // Shift to High Gear, Update the SmartDashboard to show we are in HIGH gear
@@ -118,6 +120,12 @@ public class DriveTrain extends SubsystemBase {
   public void shiftLow(){
     m_shift.set(Value.kReverse);
     //shifterStatus = ShifterStatus.LOW;
+  }
+
+  public void shift() {
+    m_shift.toggle();
+    LowGear = !LowGear;
+    System.out.println("Low Gear");
   }
 
   // Test Stuff

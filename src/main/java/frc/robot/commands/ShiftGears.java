@@ -7,9 +7,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class ShiftHigh extends CommandBase {
+public class ShiftGears extends CommandBase {
   /** Creates a new ShiftHigh. */
-  public ShiftHigh() {
+  public ShiftGears() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_robotDrive);
   }
@@ -22,14 +22,8 @@ public class ShiftHigh extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("This button is working!");
-    // RobotContainer.m_robotDrive.shiftHigh();
-    if (RobotContainer.airflo.getRawButtonPressed(6)) {
-      RobotContainer.m_robotDrive.shiftHigh();
-    } 
-    if (RobotContainer.airflo.getRawButtonPressed(5)) {
-      RobotContainer.m_robotDrive.shiftLow();
-    }
+    System.out.println("Shift Button Pressed!");
+    RobotContainer.m_robotDrive.shift();
   }
 
   // Called once the command ends or is interrupted.
