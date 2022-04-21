@@ -21,10 +21,6 @@ public class Extend extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // if (xbox2.getBButtonPressed()){
-    //   this.intake_sol.toggle();
-    // }
-    // RobotContainer.m_intake.extend();
     System.out.println("B button pressed");
     RobotContainer.m_intake.extend();
     RobotContainer.m_intake.setMotor();

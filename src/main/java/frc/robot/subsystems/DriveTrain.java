@@ -135,12 +135,9 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // Update the odometry in the periodic block
-    // BRO LOOK RIGHT HERE // 
-    // BRO? //
-    // BRO? Can you see this line? //
     m_odometry.update(
         //m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance()); // Multiply these values by the DISTANCE_PER_PULSE constant?
-        m_gyro.getRotation2d(), m_leftEncoder.getDistance()*Constants.DISTANCE_PER_PULSE, m_rightEncoder.getDistance()*Constants.DISTANCE_PER_PULSE); // Testing stuff
+        m_gyro.getRotation2d(), m_leftEncoder.getDistance()*Constants.DISTANCE_PER_PULSE, m_rightEncoder.getDistance()*Constants.DISTANCE_PER_PULSE); // Testing stuff    edit: IT WORKS DO NOT DELETE
     m_odometry.update(Rotation2d.fromDegrees(getHeading()), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
 
     var translation = m_odometry.getPoseMeters().getTranslation();

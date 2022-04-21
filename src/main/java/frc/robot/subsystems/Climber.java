@@ -24,7 +24,6 @@ public class Climber extends SubsystemBase {
   public void periodic() {}
 
   public void setSpeed(double speed) {
-    //System.out.println(speed);
     climbMotor1.set(speed);
     climbMotor2.set(-speed);
   }

@@ -4,25 +4,23 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
-// import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import frc.robot.subsystems.*;
-//import frc.robot.subsystems.DriveTrain.ShifterStatus;
-import frc.robot.utils.Limelight;
+import org.opencv.core.Mat;
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.CvSink;
 import edu.wpi.first.cscore.CvSource;
 import edu.wpi.first.cscore.UsbCamera;
-import org.opencv.core.Mat;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.DriveTrain;
+//import frc.robot.subsystems.DriveTrain.ShifterStatus;
+import frc.robot.utils.Limelight;
 import frc.robot.utils.Limelight.LightMode;
-// import edu.wpi.first.wpilibj.PowerDistribution;
-// import edu.wpi.first.wpilibj.PneumaticsControlModule;
 
 
 /**
