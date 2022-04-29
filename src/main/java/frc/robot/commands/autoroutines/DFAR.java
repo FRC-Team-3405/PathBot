@@ -16,8 +16,8 @@ public class DFAR extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new DriveForward(),
-      new AlignRobot()
+      new DriveForward(), // Drive forward for 1 second
+      new AlignRobot() // Align the robot with the goal
     );
   }
 }
