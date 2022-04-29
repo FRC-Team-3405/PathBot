@@ -34,4 +34,11 @@ A special thanks goes to team 3374 (the JacksonHole RoboBroncs) and their progra
 ### DriveTrain
 - Four ***CTRE Falcon500*** motors: Arguably the best motors in all of FRC History and our "secret" ingredient. These will never stop for ***anything***!
 - ***Two-Speed*** Gearbox: For when the robot we're defending decides it wants to push back: We can push anyone and anything around!
-- ***Efficient and Power-Aware***: Current limits (and other spices) to prevent browning and provide infinite robot-pushing power.
+- ***Efficient and Power-Aware***: Current limits (and other "secret" ingredients) to prevent browning and provide infinite robot-pushing power.
+
+### Climber
+- Andre utilizes two ***RevRobotics Neo Brushless motors*** for the first-stage climbing mechanism.
+
+### Intake
+- One ***VEXPro 775*** motor
+- ***Efficient and Power-Aware***: Current limits (and other goodies) to prevent browning and allow the DriveTrain function to be utilized during intake operation.
