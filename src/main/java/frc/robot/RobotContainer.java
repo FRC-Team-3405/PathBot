@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
-import frc.robot.commands.autocommands.BlueTwoBall_Two;
+import frc.robot.commands.autocommands.*;
 import frc.robot.commands.autoroutines.B2B1;
 import frc.robot.subsystems.*;
 import frc.robot.utils.Limelight;
@@ -40,7 +40,7 @@ public class RobotContainer {
   // Joystick Buttons
   // Primary Driver
   JoystickButton alignButton, shiftButton, 
-      intakeButton, shootButton, climbToggleButton, climbButton, 
+      intakeButton, autoShootButton, shootButton, climbToggleButton, climbButton, 
       climbButton2, retractButton, intakeExtendButton, intakeRetractButton,btn_intake_arm;
 
 
@@ -62,6 +62,7 @@ public class RobotContainer {
     shiftButton = new JoystickButton(airflo, Constants.SHIFT_HIGHGEAR_BUTTON);
     // Secondary Driver Joystick Buttons
     //intakeButton = new JoystickButton(xbox2, Constants.INTAKE_BUTTON);
+    autoShootButton = new JoystickButton(xbox2, Constants.AUTO_SHOOT_BUTTON);
     shootButton = new JoystickButton(xbox2, Constants.SHOOT_BUTTON);
     //climbButton = new JoystickButton(xbox2, Constants.CLIMB_BUTTON_EXTEND);
     //climbButton2 = new JoystickButton(xbox2, Constants.CLIMB_BUTTON_RETRACT);
@@ -71,7 +72,7 @@ public class RobotContainer {
 
     btn_intake_arm = new JoystickButton(xbox2, Constants.INTAKE_POSITION_PISTON);
 
-    m_shooter.setDefaultCommand(new ShootBall());
+    // m_shooter.setDefaultCommand(new ShootBall());
     m_climber.setDefaultCommand(new Climb());
     
 
@@ -101,6 +102,7 @@ public class RobotContainer {
     // Primary Driver
     alignButton.whenPressed(new AlignRobot());
     shiftButton.whenPressed(new ShiftGears());
+    autoShootButton.whenPressed(new SpinShooterMotor());
     
     // shiftHighButton.whenPressed(new ShiftHigh());
     //shiftHighButton.whenPressed(new FunctionalCommand(() -> System.out.println("I'm running!"), ()->{}, ()->{}, alignButton, ()->{}));
@@ -122,7 +124,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new DriveForward();
+    //return new DriveForward();
+    return new SpinShooterMotor();
     //   if (true)
   //     return new AlignRobot();
 

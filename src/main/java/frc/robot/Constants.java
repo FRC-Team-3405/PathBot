@@ -23,7 +23,7 @@ public final class Constants {
     public static final int XBOX_XAXIS = 1; // arcadeDrive
     public static final int XBOX_YAXIS = 3; // arcadeDrive; Change to 4 if using an XboxController
     public static final int SHIFT_HIGHGEAR_BUTTON = 6; // Right Trigger on AirFlo
-    public static final int SHIFT_LOWGEAR_BUTTON = 5; // Left Trigger on AirFlo
+    public static final int AUTO_SHOOT_BUTTON = 5; // Left Trigger on AirFlo
     public static final int ALIGN_ROBOT_BUTTON = 8;
 
     // Joystick Controller (Secondary Driver)
