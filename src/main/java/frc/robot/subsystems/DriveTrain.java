@@ -36,10 +36,10 @@ public class DriveTrain extends SubsystemBase {
   public static DoubleSolenoid m_shift = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.HIGHGEAR, Constants.LOWGEAR);
   public static boolean LowGear = false;
 
-  private final WPI_TalonFX frontLeft = new WPI_TalonFX(DriveConstants.FL_TALONFX);
-  private final WPI_TalonFX backLeft = new WPI_TalonFX(DriveConstants.BL_TALONFX);
-  private final WPI_TalonFX frontRight = new WPI_TalonFX(DriveConstants.FR_TALONFX);
-  private final WPI_TalonFX backRight = new WPI_TalonFX(DriveConstants.BR_TALONFX);
+  public final WPI_TalonFX frontLeft = new WPI_TalonFX(DriveConstants.FL_TALONFX);
+  public final WPI_TalonFX backLeft = new WPI_TalonFX(DriveConstants.BL_TALONFX);
+  public final WPI_TalonFX frontRight = new WPI_TalonFX(DriveConstants.FR_TALONFX);
+  public final WPI_TalonFX backRight = new WPI_TalonFX(DriveConstants.BR_TALONFX);
   
 
   // The motors on the left side of the drive.
