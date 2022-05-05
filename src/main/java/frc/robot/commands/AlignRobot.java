@@ -9,8 +9,6 @@ import frc.robot.RobotContainer;
 import frc.robot.utils.Limelight;
 import frc.robot.utils.Limelight.LightMode;
 
-// import com.ctre.phoenix.motorcontrol.NeutralMode;
-
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -23,11 +21,6 @@ public class AlignRobot extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_robotDrive);
     t = new Timer();
-    // Set the neutral mode to Brake (To avoid being pushed while aligning)
-    // RobotContainer.m_robotDrive.frontLeft.setNeutralMode(NeutralMode.Brake); // Front Left
-    // RobotContainer.m_robotDrive.backLeft.setNeutralMode(NeutralMode.Brake); // Back Left
-    // RobotContainer.m_robotDrive.frontRight.setNeutralMode(NeutralMode.Brake); // Front Right
-    // RobotContainer.m_robotDrive.backRight.setNeutralMode(NeutralMode.Brake); // Back Right
   }
 
   // Called when the command is initially scheduled.
@@ -47,7 +40,7 @@ public class AlignRobot extends CommandBase {
   public void execute() {
     
     if (!Limelight.isTarget()) {
-      System.out.println("There is no target here.");
+      System.out.println("Searching for target...");
       RobotContainer.m_robotDrive.tankDriveVolts(3, -3);
       return;
     }
@@ -55,11 +48,9 @@ public class AlignRobot extends CommandBase {
 
     double aX = scaleX(Limelight.getTx());
     double yaw = (aX / 2) * Constants.FOV_SUB_H;
-    //System.out.println(aX);
-    //System.out.println(yaw);
   
     if (Math.abs(yaw) <= 5) {
-      System.out.println("Your mom says this bot is aligned!");
+      System.out.println("Bot Aligned!");
       RobotContainer.m_robotDrive.tankDriveVolts(0, 0);
       isFinished = true;
       return;
@@ -76,14 +67,8 @@ public class AlignRobot extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    isFinished = false;
-    // Limelight.setLedMode(LightMode.eOff); // CHECK THIS?
-
-    // Set the neutral mode to Coast (We only need Brake while aligning)
-    // RobotContainer.m_robotDrive.frontLeft.setNeutralMode(NeutralMode.Coast); // Front Left
-    // RobotContainer.m_robotDrive.backLeft.setNeutralMode(NeutralMode.Coast); // Back Left
-    // RobotContainer.m_robotDrive.frontRight.setNeutralMode(NeutralMode.Coast); // Front Right
-    // RobotContainer.m_robotDrive.backRight.setNeutralMode(NeutralMode.Coast); // Back Right
+    isFinished = true;
+    Limelight.setLedMode(LightMode.eOff); // CHECK THIS?
   }
 
   // Returns true when the command should end.

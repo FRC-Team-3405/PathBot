@@ -6,7 +6,6 @@ package frc.robot.commands.autoroutines;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.*;
-import frc.robot.commands.autocommands.SpinShooterMotor;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -16,8 +15,7 @@ public class DFARSHAR extends SequentialCommandGroup {
   public DFARSHAR() {
     addCommands(
       new DriveForward(), // Drive forward for 1 second
-      new AlignRobot(), // Align the robot with the goal
-      new SpinShooterMotor() // Shoot the preloaded ball
+      new AlignAndShoot() // Align, Shoot the Ball
     );
   }
 }
