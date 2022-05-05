@@ -22,15 +22,16 @@ public final class Constants {
     public static final int XBOX = 0; // AIRFLO/XBOX Controller Port
     public static final int XBOX_XAXIS = 1; // arcadeDrive
     public static final int XBOX_YAXIS = 3; // arcadeDrive; Change to 4 if using an XboxController
-    public static final int SHIFT_HIGHGEAR_BUTTON = 6; // Right Trigger on AirFlo
-    public static final int AUTO_SHOOT_BUTTON = 5; // Left Trigger on AirFlo
+    public static final int DRIVER_SHOOT_BUTTON = 5;
+    public static final int SHIFT_HIGHGEAR_BUTTON = 6; // Right Bumper on AirFlo
     public static final int ALIGN_ROBOT_BUTTON = 8;
 
     // Joystick Controller (Secondary Driver)
     public static final int JOYSTICK = 1; // Joystick Controller Port
     public static final int INTAKE_POSITION_PISTON = 2; // Piston to bring intake arm in and out
     public static final int SHOOT_BALL = 4; // Run the motors to shoot the ball!
-    public static final int INTAKE_BUTTON = 5;
+    // public static final int INTAKE_BUTTON = 5;
+    public static final int AUTO_SHOOT_BUTTON = 5; // Left Bumper on Xbox
     public static final int SHOOT_BUTTON = 6;
 
     //** DriveTrain */

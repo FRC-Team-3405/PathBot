@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.commands.autocommands.*;
 import frc.robot.commands.autoroutines.B2B1;
+import frc.robot.commands.autoroutines.DFARSHAR;
 import frc.robot.subsystems.*;
 import frc.robot.utils.Limelight;
 import frc.robot.utils.Limelight.LightMode;
@@ -41,7 +42,7 @@ public class RobotContainer {
   // Primary Driver
   JoystickButton alignButton, shiftButton, 
       intakeButton, autoShootButton, shootButton, climbToggleButton, climbButton, 
-      climbButton2, retractButton, intakeExtendButton, intakeRetractButton,btn_intake_arm;
+      climbButton2, retractButton, intakeExtendButton, intakeRetractButton,btn_intake_arm, driverShootButton;
 
 
   // Autonomous Chooser
@@ -60,6 +61,8 @@ public class RobotContainer {
     // Primary Driver Joystick Buttons
     alignButton = new JoystickButton(airflo, Constants.ALIGN_ROBOT_BUTTON);
     shiftButton = new JoystickButton(airflo, Constants.SHIFT_HIGHGEAR_BUTTON);
+    driverShootButton = new JoystickButton(airflo, Constants.DRIVER_SHOOT_BUTTON);
+
     // Secondary Driver Joystick Buttons
     //intakeButton = new JoystickButton(xbox2, Constants.INTAKE_BUTTON);
     autoShootButton = new JoystickButton(xbox2, Constants.AUTO_SHOOT_BUTTON);
@@ -125,7 +128,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     //return new DriveForward();
-    return new SpinShooterMotor();
+    return new DFARSHAR(); // Drive Forward, Align the Bot, Shoot the Ball, Finish
     //   if (true)
   //     return new AlignRobot();
 
