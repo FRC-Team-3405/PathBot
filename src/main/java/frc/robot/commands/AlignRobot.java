@@ -9,7 +9,7 @@ import frc.robot.RobotContainer;
 import frc.robot.utils.Limelight;
 import frc.robot.utils.Limelight.LightMode;
 
-import com.ctre.phoenix.motorcontrol.NeutralMode;
+// import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -24,10 +24,10 @@ public class AlignRobot extends CommandBase {
     addRequirements(RobotContainer.m_robotDrive);
     t = new Timer();
     // Set the neutral mode to Brake (To avoid being pushed while aligning)
-    RobotContainer.m_robotDrive.frontLeft.setNeutralMode(NeutralMode.Brake); // Front Left
-    RobotContainer.m_robotDrive.backLeft.setNeutralMode(NeutralMode.Brake); // Back Left
-    RobotContainer.m_robotDrive.frontRight.setNeutralMode(NeutralMode.Brake); // Front Right
-    RobotContainer.m_robotDrive.backRight.setNeutralMode(NeutralMode.Brake); // Back Right
+    // RobotContainer.m_robotDrive.frontLeft.setNeutralMode(NeutralMode.Brake); // Front Left
+    // RobotContainer.m_robotDrive.backLeft.setNeutralMode(NeutralMode.Brake); // Back Left
+    // RobotContainer.m_robotDrive.frontRight.setNeutralMode(NeutralMode.Brake); // Front Right
+    // RobotContainer.m_robotDrive.backRight.setNeutralMode(NeutralMode.Brake); // Back Right
   }
 
   // Called when the command is initially scheduled.
@@ -48,7 +48,7 @@ public class AlignRobot extends CommandBase {
     
     if (!Limelight.isTarget()) {
       System.out.println("There is no target here.");
-      RobotContainer.m_robotDrive.tankDriveVolts(1, -1);
+      RobotContainer.m_robotDrive.tankDriveVolts(3, -3);
       return;
     }
     
@@ -77,13 +77,13 @@ public class AlignRobot extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     isFinished = false;
-    Limelight.setLedMode(LightMode.eOff);
+    // Limelight.setLedMode(LightMode.eOff); // CHECK THIS?
 
     // Set the neutral mode to Coast (We only need Brake while aligning)
-    RobotContainer.m_robotDrive.frontLeft.setNeutralMode(NeutralMode.Coast); // Front Left
-    RobotContainer.m_robotDrive.backLeft.setNeutralMode(NeutralMode.Coast); // Back Left
-    RobotContainer.m_robotDrive.frontRight.setNeutralMode(NeutralMode.Coast); // Front Right
-    RobotContainer.m_robotDrive.backRight.setNeutralMode(NeutralMode.Coast); // Back Right
+    // RobotContainer.m_robotDrive.frontLeft.setNeutralMode(NeutralMode.Coast); // Front Left
+    // RobotContainer.m_robotDrive.backLeft.setNeutralMode(NeutralMode.Coast); // Back Left
+    // RobotContainer.m_robotDrive.frontRight.setNeutralMode(NeutralMode.Coast); // Front Right
+    // RobotContainer.m_robotDrive.backRight.setNeutralMode(NeutralMode.Coast); // Back Right
   }
 
   // Returns true when the command should end.

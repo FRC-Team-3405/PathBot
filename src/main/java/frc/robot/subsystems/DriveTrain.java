@@ -125,7 +125,6 @@ public class DriveTrain extends SubsystemBase {
   public void shift() {
     m_shift.toggle();
     LowGear = !LowGear;
-    System.out.println("Low Gear");
   }
 
   // Test Stuff

@@ -22,7 +22,7 @@ public final class Constants {
     public static final int XBOX = 0; // AIRFLO/XBOX Controller Port
     public static final int XBOX_XAXIS = 1; // arcadeDrive
     public static final int XBOX_YAXIS = 3; // arcadeDrive; Change to 4 if using an XboxController
-    public static final int DRIVER_SHOOT_BUTTON = 5;
+    public static final int DRIVER_SHOOT_BUTTON = 7;
     public static final int SHIFT_HIGHGEAR_BUTTON = 6; // Right Bumper on AirFlo
     public static final int ALIGN_ROBOT_BUTTON = 8;
 

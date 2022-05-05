@@ -106,6 +106,7 @@ public class RobotContainer {
     alignButton.whenPressed(new AlignRobot());
     shiftButton.whenPressed(new ShiftGears());
     autoShootButton.whenPressed(new SpinShooterMotor());
+    driverShootButton.whenPressed(new AlignAndShoot());
     
     // shiftHighButton.whenPressed(new ShiftHigh());
     //shiftHighButton.whenPressed(new FunctionalCommand(() -> System.out.println("I'm running!"), ()->{}, ()->{}, alignButton, ()->{}));
