@@ -15,6 +15,7 @@ The robot is driven using a Differential Drive (```arcadeDrive```).
 - ```Right Joystick```: Move left / right
 - ```Right Bumper```: Toggle Gear Shift; Low Gear by Default
 - ```Right Trigger```: "Align Robot" Command. Requires the LimeLight camera and DriveTrain to be operational.
+- ```Left Bumper```: Auto-Align and Auto-Shoot commands (Sequential Command Group).
 
 ### Secondary Driver Controller Map (Xbox Controller)
 
