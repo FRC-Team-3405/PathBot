@@ -19,8 +19,8 @@ public class SpinShooterMotor extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-      RobotContainer.m_shooter.shoot(-0.65);
-      if (t.get() > 0.7) {
+      RobotContainer.m_shooter.shoot(-0.85);
+      if (t.get() > 1.4) {
         RobotContainer.m_shooter.tower(-0.5);
       }
       else {
@@ -39,6 +39,6 @@ public class SpinShooterMotor extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-      return t.hasElapsed(1.0);
+      return t.hasElapsed(2.0);
     }
 }

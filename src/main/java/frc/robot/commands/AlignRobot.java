@@ -53,7 +53,7 @@ public class AlignRobot extends CommandBase {
       System.out.println("Bot Aligned!");
       RobotContainer.m_robotDrive.tankDriveVolts(0, 0);
       isFinished = true;
-      Limelight.setLedMode(LightMode.eOff); // CHECK THIS?
+      // Limelight.setLedMode(LightMode.eOff); // CHECK THIS?
       return;
     }
 
@@ -68,7 +68,7 @@ public class AlignRobot extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    isFinished = false;
+    isFinished = false; // CHECK THIS!
     // Limelight.setLedMode(LightMode.eOff); // CHECK THIS?
   }
 

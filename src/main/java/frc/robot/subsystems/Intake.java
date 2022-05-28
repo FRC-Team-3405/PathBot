@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 // import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
+
 import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 
 public class Intake extends SubsystemBase {
@@ -35,10 +37,12 @@ public class Intake extends SubsystemBase {
         if (extended) {
             System.out.println("Intake Motor On");
             motor.set(ControlMode.PercentOutput, -1.0); // Intake Motor
+            RobotContainer.m_shooter.strayTowerMotor.set(ControlMode.PercentOutput, -0.3);
             //orangeRight.set(ControlMode.PercentOutput, 0.3); // Spinny Orange Wheel
             //orangeRight.set(ControlMode.PercentOutput, -0.3); // Spinny Orange Wheel 2
         } else {
             motor.set(ControlMode.PercentOutput, 0.0);
+            RobotContainer.m_shooter.strayTowerMotor.set(ControlMode.PercentOutput, 0.0);
             //orangeRight.set(ControlMode.PercentOutput, 0.0);
             //orangeLeft.set(ControlMode.PercentOutput, 0.0);
         }
