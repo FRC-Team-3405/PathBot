@@ -53,7 +53,7 @@ public class AlignRobot extends CommandBase {
       System.out.println("Bot Aligned!");
       RobotContainer.m_robotDrive.tankDriveVolts(0, 0);
       isFinished = true;
-      // Limelight.setLedMode(LightMode.eOff); // CHECK THIS?
+      Limelight.setLedMode(LightMode.eOff); // CHECK THIS?
       return;
     }
 
