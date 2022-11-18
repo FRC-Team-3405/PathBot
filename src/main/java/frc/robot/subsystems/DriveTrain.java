@@ -87,7 +87,7 @@ public class DriveTrain extends SubsystemBase {
     );
   }
 
-  /** Creates a new DriveSubsystem. */
+  /** Creates a new DriveTrain. */
   public DriveTrain() {
     setFalconLimit(frontRight);
     setFalconLimit(backRight);
